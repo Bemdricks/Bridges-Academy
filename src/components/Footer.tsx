@@ -34,8 +34,12 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <img src="/logo.png" alt="Bridges Academy" className="h-[4.5rem] md:h-20 w-auto mb-4 bg-white rounded-lg" />
-            <p className="text-brand-300 font-display italic text-lg mb-4">Built to Belong. Built to Become.</p>
+            <div className="flex items-center gap-4 mb-4">
+              <img src="/logo.png" alt="Bridges Academy" className="h-[4.5rem] md:h-20 w-auto bg-white rounded-lg shrink-0" />
+              <p className="text-brand-300 font-display italic text-base sm:text-lg leading-tight">
+                Built to Belong.<br />Built to Become.
+              </p>
+            </div>
             <p className="text-brand-400 text-sm leading-relaxed max-w-sm">
               A new K–3 school in the Stockbridge area of Henry County, Georgia. Opening August 2027.
             </p>
