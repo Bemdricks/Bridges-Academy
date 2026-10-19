@@ -1,4 +1,4 @@
-import { GraduationCap, MapPin, Mail } from 'lucide-react';
+import { MapPin, Mail } from 'lucide-react';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 
@@ -34,12 +34,7 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-full bg-brand-600 flex items-center justify-center">
-                <GraduationCap className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-display font-bold text-lg">Bridges Academy</span>
-            </div>
+            <img src="/logo.png" alt="Bridges Academy" className="h-[4.5rem] md:h-20 w-auto mb-4 bg-white rounded-lg" />
             <p className="text-brand-300 font-display italic text-lg mb-4">Built to Belong. Built to Become.</p>
             <p className="text-brand-400 text-sm leading-relaxed max-w-sm">
               A new K–3 school in the Stockbridge area of Henry County, Georgia. Opening August 2027.

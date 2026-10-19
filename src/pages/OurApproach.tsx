@@ -48,7 +48,7 @@ export default function OurApproach({ onNavigate }: Props) {
   const badgesRef = useInView();
 
   return (
-    <div className="pt-16 md:pt-20">
+    <div className="pt-32 sm:pt-36 md:pt-40 lg:pt-44">
       {/* Page hero */}
       <section className="relative py-20 md:py-28 bg-brand-900 overflow-hidden">
         <div className="absolute inset-0 opacity-10">

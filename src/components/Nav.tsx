@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, GraduationCap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 
@@ -41,24 +41,18 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between pt-4 sm:pt-6 lg:pt-8 pb-4 sm:pb-6 lg:pb-8">
           {/* Logo */}
           <button
             onClick={() => handleNav('home')}
-            className="flex items-center gap-2 group"
+            className="flex items-center"
             aria-label="Go to homepage"
           >
-            <div className="w-9 h-9 rounded-full bg-brand-600 flex items-center justify-center group-hover:bg-brand-700 transition-colors">
-              <GraduationCap className="w-5 h-5 text-white" />
-            </div>
-            <div className="text-left">
-              <span className={`block font-display font-bold text-sm leading-tight transition-colors ${scrolled || menuOpen ? 'text-brand-800' : currentPage === 'home' ? 'text-white' : 'text-brand-800'}`}>
-                Bridges Academy
-              </span>
-              <span className={`block text-xs leading-tight transition-colors ${scrolled || menuOpen ? 'text-neutral-500' : currentPage === 'home' ? 'text-white/80' : 'text-neutral-500'}`}>
-                Built to Belong. Built to Become.
-              </span>
-            </div>
+            <img
+              src="/logo.png"
+              alt="Bridges Academy"
+              className="h-[4.5rem] md:h-20 w-auto bg-white rounded-lg"
+            />
           </button>
 
           {/* Desktop nav */}

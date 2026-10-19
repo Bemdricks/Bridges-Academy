@@ -69,7 +69,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Montserrat', 'system-ui', 'sans-serif'],
         display: ['Playfair Display', 'Georgia', 'serif'],
       },
       animation: {

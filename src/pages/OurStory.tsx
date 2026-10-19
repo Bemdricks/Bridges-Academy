@@ -31,7 +31,7 @@ export default function OurStory({ onNavigate }: Props) {
   const teamRef = useInView();
 
   return (
-    <div className="pt-16 md:pt-20">
+    <div className="pt-32 sm:pt-36 md:pt-40 lg:pt-44">
       {/* Hero */}
       <section className="relative py-20 md:py-28 bg-neutral-50 overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-60" />
