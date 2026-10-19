@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
@@ -18,13 +18,6 @@ const navItems: { label: string; page: Page }[] = [
 
 export default function Nav({ currentPage, onNavigate }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const handleNav = (page: Page) => {
     onNavigate(page);
@@ -33,13 +26,7 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || menuOpen
-          ? 'bg-white shadow-sm'
-          : 'bg-transparent'
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between pt-4 sm:pt-6 lg:pt-8 pb-4 sm:pb-6 lg:pb-8">
           {/* Logo */}
@@ -64,10 +51,6 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   currentPage === item.page
                     ? 'text-brand-700 bg-brand-50'
-                    : scrolled
-                    ? 'text-neutral-700 hover:text-brand-700 hover:bg-brand-50'
-                    : currentPage === 'home'
-                    ? 'text-white/90 hover:text-white hover:bg-white/10'
                     : 'text-neutral-700 hover:text-brand-700 hover:bg-brand-50'
                 }`}
               >
@@ -85,9 +68,7 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
           {/* Mobile menu toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors ${
-              scrolled || menuOpen ? 'text-neutral-700 hover:bg-neutral-100' : currentPage === 'home' ? 'text-white hover:bg-white/10' : 'text-neutral-700 hover:bg-neutral-100'
-            }`}
+            className="md:hidden p-2 rounded-lg transition-colors text-neutral-700 hover:bg-neutral-100"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

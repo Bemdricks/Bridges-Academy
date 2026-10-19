@@ -37,6 +37,7 @@ export default function GetInvolved({ onNavigate }: Props) {
     e.preventDefault();
     setRsvpSubmitting(true);
     setRsvpError('');
+    if (!supabase) { setRsvpSubmitting(false); setRsvpError('Something went wrong. Please try again.'); return; }
     const { error } = await supabase.from('rsvp_submissions').insert({
       name: rsvp.name, email: rsvp.email,
       phone: rsvp.phone || null, guests_count: rsvp.guests_count,
@@ -50,6 +51,7 @@ export default function GetInvolved({ onNavigate }: Props) {
     e.preventDefault();
     setPartnerSubmitting(true);
     setPartnerError('');
+    if (!supabase) { setPartnerSubmitting(false); setPartnerError('Something went wrong. Please try again.'); return; }
     const { error } = await supabase.from('partner_submissions').insert({
       name: partner.name, email: partner.email,
       organization: partner.organization || null,
@@ -65,6 +67,7 @@ export default function GetInvolved({ onNavigate }: Props) {
     e.preventDefault();
     setTeamSubmitting(true);
     setTeamError('');
+    if (!supabase) { setTeamSubmitting(false); setTeamError('Something went wrong. Please try again.'); return; }
     const { error } = await supabase.from('team_interest_submissions').insert({
       name: team.name, email: team.email,
       role_interest: team.role_interest || null,

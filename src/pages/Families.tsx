@@ -64,6 +64,7 @@ export default function Families({ onNavigate }: Props) {
     e.preventDefault();
     setISubmitting(true);
     setIError('');
+    if (!supabase) { setISubmitting(false); setIError('Something went wrong. Please try again.'); return; }
     const { error } = await supabase.from('interest_submissions').insert({
       parent_name: interest.parent_name,
       email: interest.email,
@@ -82,6 +83,7 @@ export default function Families({ onNavigate }: Props) {
     e.preventDefault();
     setVSubmitting(true);
     setVError('');
+    if (!supabase) { setVSubmitting(false); setVError('Something went wrong. Please try again.'); return; }
     const { error } = await supabase.from('visit_bookings').insert({
       parent_name: visit.parent_name,
       email: visit.email,
