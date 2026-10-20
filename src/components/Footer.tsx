@@ -18,8 +18,8 @@ export default function Footer({ onNavigate }: FooterProps) {
       <div className="bg-amber-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <p className="font-display font-bold text-2xl text-white">Is Bridges the right fit for your family?</p>
-            <p className="text-white/90 mt-1">Tell us a little about your family. It takes about a minute.</p>
+            <p className="font-display font-bold text-2xl text-brand-900">Is Bridges the right fit for your family?</p>
+            <p className="text-brand-800 mt-1">Tell us a little about your family. It takes about a minute.</p>
           </div>
           <button
             onClick={() => handleNav('families')}
@@ -45,11 +45,11 @@ export default function Footer({ onNavigate }: FooterProps) {
             </p>
             <div className="mt-6 space-y-2">
               <div className="flex items-center gap-2 text-brand-400 text-sm">
-                <MapPin className="w-4 h-4 text-brand-500 flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-brand-300 flex-shrink-0" />
                 <span>Stockbridge area, Henry County, Georgia</span>
               </div>
               <div className="flex items-center gap-2 text-brand-400 text-sm">
-                <Mail className="w-4 h-4 text-brand-500 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-brand-300 flex-shrink-0" />
                 <span>info@bridgesacademy.org</span>
               </div>
             </div>
@@ -112,10 +112,10 @@ export default function Footer({ onNavigate }: FooterProps) {
         </div>
 
         <div className="mt-12 pt-8 border-t border-brand-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-brand-500 text-xs">
+          <p className="text-brand-400 text-xs">
             &copy; {new Date().getFullYear()} Bridges Academy. All rights reserved.
           </p>
-          <p className="text-brand-500 text-xs">
+          <p className="text-brand-400 text-xs">
             Stockbridge &bull; McDonough &bull; Locust Grove &bull; Henry County, GA
           </p>
         </div>

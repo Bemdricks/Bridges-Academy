@@ -106,7 +106,7 @@ export default function GetInvolved({ onNavigate }: Props) {
   return (
     <div className="pt-32 sm:pt-36 md:pt-40 lg:pt-44">
       {/* Hero */}
-      <section className="py-20 md:py-28 bg-coral-500 relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-brand-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full border-4 border-white" />
           <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full border-2 border-white" />
@@ -173,11 +173,11 @@ export default function GetInvolved({ onNavigate }: Props) {
                 <form onSubmit={submitRsvp} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className={labelClass}>Your Name <span className="text-coral-500">*</span></label>
+                      <label className={labelClass}>Your Name <span className="text-error-500">*</span></label>
                       <input type="text" required className={inputClass} placeholder="Your full name" value={rsvp.name} onChange={e => setRsvp(s => ({ ...s, name: e.target.value }))} />
                     </div>
                     <div>
-                      <label className={labelClass}>Email <span className="text-coral-500">*</span></label>
+                      <label className={labelClass}>Email <span className="text-error-500">*</span></label>
                       <input type="email" required className={inputClass} placeholder="you@example.com" value={rsvp.email} onChange={e => setRsvp(s => ({ ...s, email: e.target.value }))} />
                     </div>
                   </div>
@@ -211,11 +211,11 @@ export default function GetInvolved({ onNavigate }: Props) {
                 <form onSubmit={submitPartner} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className={labelClass}>Your Name <span className="text-coral-500">*</span></label>
+                      <label className={labelClass}>Your Name <span className="text-error-500">*</span></label>
                       <input type="text" required className={inputClass} placeholder="Your full name" value={partner.name} onChange={e => setPartner(s => ({ ...s, name: e.target.value }))} />
                     </div>
                     <div>
-                      <label className={labelClass}>Email <span className="text-coral-500">*</span></label>
+                      <label className={labelClass}>Email <span className="text-error-500">*</span></label>
                       <input type="email" required className={inputClass} placeholder="you@example.com" value={partner.email} onChange={e => setPartner(s => ({ ...s, email: e.target.value }))} />
                     </div>
                   </div>
@@ -254,11 +254,11 @@ export default function GetInvolved({ onNavigate }: Props) {
                 <form onSubmit={submitTeam} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className={labelClass}>Your Name <span className="text-coral-500">*</span></label>
+                      <label className={labelClass}>Your Name <span className="text-error-500">*</span></label>
                       <input type="text" required className={inputClass} placeholder="Your full name" value={team.name} onChange={e => setTeam(s => ({ ...s, name: e.target.value }))} />
                     </div>
                     <div>
-                      <label className={labelClass}>Email <span className="text-coral-500">*</span></label>
+                      <label className={labelClass}>Email <span className="text-error-500">*</span></label>
                       <input type="email" required className={inputClass} placeholder="you@example.com" value={team.email} onChange={e => setTeam(s => ({ ...s, email: e.target.value }))} />
                     </div>
                   </div>

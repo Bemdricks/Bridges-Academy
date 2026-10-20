@@ -38,10 +38,11 @@ export default function OurStory({ onNavigate }: Props) {
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">Our Story</span>
           <h1 className="font-display font-bold text-5xl md:text-6xl text-neutral-900 mt-3 mb-6 leading-tight">
-            A school built from experience — and love.
+            Built from experience. Driven by purpose. Rooted in love.
           </h1>
           <p className="text-neutral-600 text-xl leading-relaxed max-w-2xl">
-            Bridges Academy was founded by Monique Bridges, a school leader who has opened two schools in two states and grown each past 100 students in its first year. This time, she's building the school she has always envisioned.
+          Monique Bridges has spent her career building schools, developing teams, and creating environments where students can thrive. After opening schools in two states and growing each to more than 100 students in its first year, she is bringing that experience to her most personal undertaking yet: building the school she has always envisioned.
+          Bridges Academy was created around a simple belief: every child deserves to feel a sense of belonging, discover their potential, and develop the skills to thrive beyond the classroom.
           </p>
         </div>
       </section>
@@ -70,17 +71,22 @@ export default function OurStory({ onNavigate }: Props) {
               <h2 className="font-display font-bold text-3xl md:text-4xl text-neutral-900 mt-3 mb-6">Monique Bridges, Founder</h2>
               <div className="space-y-5 text-neutral-600 leading-relaxed">
                 <p>
-                  Monique Bridges has dedicated her career to creating schools where every child is seen, challenged, and supported. She has opened two schools in two states, growing each past 100 students in its first year.
+                Monique Bridges has spent more than a decade in education, opening schools in two states and growing each to more than 100 students in its first year. Born in Atlanta and raised on the city’s eastside, she understands the importance of creating opportunities that help children see beyond their current circumstances.
                 </p>
                 <p>
-                  She has taught and led in schools that served children who had fallen out of love with learning — students who were academically behind and no longer believed school was a safe place. Again and again, she saw what happened when a child received the right support, faced genuinely high expectations, and had someone who believed in them unconditionally: they grew. Sometimes dramatically.
+                As an educator, she taught several students who began the year grade levels behind and watched them rise above grade level as they gained exposure to skilled trades, career connections, bank accounts, and experiences beyond their city. She saw what became possible when students connected learning to the real world and began to envision futures they had never considered.
                 </p>
                 <p>
-                  Bridges Academy is built on that truth. Every element of the model — personalized learning, applied projects, pathway exploration, life skills, belonging and excellence — exists because Monique has seen what it takes to reach a child and help them become the person they were meant to be.
+                What changed was not the children. It was what they believed was possible.
+                </p>
+                <p>
+                That conviction became Bridges Academy: a school where belonging and excellence go hand in hand, learning connects to the real world, and every child is known, held to high standards, and given opportunities to discover what they can become.
+                </p>
+                <p><strong>Built to Belong. Built to Become.</strong>
                 </p>
               </div>
               <blockquote className="mt-7 border-l-4 border-amber-400 pl-5">
-                <Quote className="w-6 h-6 text-amber-400 mb-2" />
+                <Quote className="w-6 h-6 text-amber-700 mb-2" />
                 <p className="text-neutral-700 italic leading-relaxed text-lg">
                   "I met a student in second grade and again in fifth, when he was performing several grade levels below expectations. With the right support, high expectations, and someone who believed in him, he grew and reached grade level."
                 </p>
@@ -167,8 +173,8 @@ export default function OurStory({ onNavigate }: Props) {
       {/* CTA */}
       <section className="py-16 bg-amber-500">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">Ready to learn more?</h2>
-          <p className="text-white/90 mb-8">Join our interest list and be first to hear news about Bridges Academy.</p>
+          <h2 className="font-display font-bold text-3xl md:text-4xl text-brand-900 mb-4">Ready to learn more?</h2>
+          <p className="text-brand-800 mb-8">Join our interest list and be first to hear news about Bridges Academy.</p>
           <button onClick={() => nav('families')} className="px-8 py-4 bg-white text-amber-700 font-semibold rounded-full hover:bg-amber-50 transition-colors inline-flex items-center gap-2">
             Join the Interest List <ArrowRight className="w-4 h-4" />
           </button>

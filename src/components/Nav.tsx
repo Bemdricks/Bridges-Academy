@@ -62,7 +62,7 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
             ))}
             <button
               onClick={() => handleNav('families')}
-              className="ml-3 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold rounded-full transition-colors shadow-sm"
+              className="ml-3 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-brand-900 text-sm font-semibold rounded-full transition-colors shadow-sm"
             >
               Book a Visit
             </button>
@@ -97,7 +97,7 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
             <div className="px-4 pt-2">
               <button
                 onClick={() => handleNav('families')}
-                className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-full transition-colors text-sm"
+                className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-brand-900 font-semibold rounded-full transition-colors text-sm"
               >
                 Book a Visit
               </button>

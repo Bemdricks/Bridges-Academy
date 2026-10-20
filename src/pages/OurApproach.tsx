@@ -37,7 +37,7 @@ const daySchedule = [
 const badges = [
   { title: 'Ask for Help', desc: 'Knowing when and how to ask for help is a superpower — not a weakness.', color: 'bg-brand-100 text-brand-700 border-brand-200' },
   { title: 'Emotional Regulation', desc: 'Feeling big feelings and knowing what to do with them.', color: 'bg-amber-100 text-amber-700 border-amber-200' },
-  { title: 'Conflict Resolution', desc: 'Disagreements are normal. Knowing how to work through them is a skill.', color: 'bg-coral-100 text-coral-700 border-coral-200' },
+  { title: 'Conflict Resolution', desc: 'Disagreements are normal. Knowing how to work through them is a skill.', color: 'bg-brand-100 text-brand-800 border-brand-200' },
   { title: 'Self-Advocacy', desc: 'Speaking up for yourself, clearly and confidently.', color: 'bg-success-50 text-success-700 border-green-200' },
 ];
 
@@ -65,7 +65,7 @@ export default function OurApproach({ onNavigate }: Props) {
           </p>
           <button
             onClick={() => nav('families')}
-            className="mt-8 px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-white font-semibold rounded-full transition-colors inline-flex items-center gap-2"
+            className="mt-8 px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-brand-900 font-semibold rounded-full transition-colors inline-flex items-center gap-2"
           >
             Book a Visit <ArrowRight className="w-4 h-4" />
           </button>
@@ -82,12 +82,12 @@ export default function OurApproach({ onNavigate }: Props) {
           </div>
           <div className="grid md:grid-cols-3 gap-0 rounded-2xl overflow-hidden shadow-xl border border-neutral-100">
             {[
-              { step: 'Know', num: '1', tagline: 'Learn it at your own pace.', body: 'Children learn each skill or idea at the level that\'s right for them — not the grade average, not the child next to them. Teachers use small groups and regular check-ins to track progress closely.', what: 'Clear progress, with no one-size-fits-all pace.', color: 'bg-brand-700', light: 'bg-brand-50' },
-              { step: 'Apply', num: '2', tagline: 'Use it in something real.', body: 'Right after learning a skill, children use it. They build, run, design, and solve — in class businesses, community projects, and real problems that matter to them.', what: 'Work that looks like real life, not worksheets.', color: 'bg-amber-500', light: 'bg-amber-50' },
-              { step: 'Explore', num: '3', tagline: 'Take it into the world.', body: 'Once a month, students step outside the classroom and meet the people who do the work — electricians, chefs, nurses, bankers. They come home with a wider picture of what\'s possible.', what: 'Monthly real-world experiences and student ventures.', color: 'bg-coral-500', light: 'bg-coral-50' },
+              { step: 'Know', num: '1', tagline: 'Learn it at your own pace.', body: 'Children learn each skill or idea at the level that\'s right for them — not the grade average, not the child next to them. Teachers use small groups and regular check-ins to track progress closely.', what: 'Clear progress, with no one-size-fits-all pace.', color: 'bg-brand-700 text-white', light: 'bg-brand-50' },
+              { step: 'Apply', num: '2', tagline: 'Use it in something real.', body: 'Right after learning a skill, children use it. They build, run, design, and solve — in class businesses, community projects, and real problems that matter to them.', what: 'Work that looks like real life, not worksheets.', color: 'bg-amber-500 text-brand-900', light: 'bg-amber-50' },
+              { step: 'Explore', num: '3', tagline: 'Take it into the world.', body: 'Once a month, students step outside the classroom and meet the people who do the work — electricians, chefs, nurses, bankers. They come home with a wider picture of what\'s possible.', what: 'Monthly real-world experiences and student ventures.', color: 'bg-brand-800 text-white', light: 'bg-brand-50' },
             ].map((item) => (
               <div key={item.step} className={`${item.light} p-8 border-r border-neutral-100 last:border-r-0`}>
-                <div className={`w-10 h-10 rounded-full ${item.color} text-white flex items-center justify-center font-bold text-sm mb-4`}>{item.num}</div>
+                <div className={`w-10 h-10 rounded-full ${item.color} flex items-center justify-center font-bold text-sm mb-4`}>{item.num}</div>
                 <h3 className="font-display font-bold text-3xl text-neutral-900 mb-2">{item.step}</h3>
                 <p className="text-brand-700 font-semibold text-sm mb-4">{item.tagline}</p>
                 <p className="text-neutral-600 text-sm leading-relaxed mb-6">{item.body}</p>
@@ -212,7 +212,7 @@ export default function OurApproach({ onNavigate }: Props) {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display font-bold text-4xl text-white mb-4">Come see it for yourself.</h2>
           <p className="text-brand-300 mb-8">Book a visit and see the Bridges approach in action.</p>
-          <button onClick={() => nav('families')} className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-white font-semibold rounded-full transition-colors inline-flex items-center gap-2">
+          <button onClick={() => nav('families')} className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-brand-900 font-semibold rounded-full transition-colors inline-flex items-center gap-2">
             Book a Visit <ArrowRight className="w-4 h-4" />
           </button>
         </div>

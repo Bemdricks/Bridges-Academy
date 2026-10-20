@@ -103,13 +103,13 @@ export default function Families({ onNavigate }: Props) {
       {/* Hero */}
       <section className="py-20 md:py-28 bg-amber-500 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full border-4 border-white" />
-          <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full border-2 border-white" />
+          <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full border-4 border-brand-900" />
+          <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full border-2 border-brand-900" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-block px-4 py-1.5 bg-white/20 text-white text-sm font-medium rounded-full mb-6 border border-white/30">For Families</span>
-          <h1 className="font-display font-bold text-5xl md:text-6xl text-white mb-5">Join Us.</h1>
-          <p className="text-white/90 text-xl max-w-xl mx-auto leading-relaxed">
+          <span className="inline-block px-4 py-1.5 bg-brand-900/10 text-brand-900 text-sm font-medium rounded-full mb-6 border border-brand-900/20">For Families</span>
+          <h1 className="font-display font-bold text-5xl md:text-6xl text-brand-900 mb-5">Join Us.</h1>
+          <p className="text-brand-800 text-xl max-w-xl mx-auto leading-relaxed">
             Bridges Academy opens August 2027 for K–3 students in Stockbridge and Henry County, Georgia. Take the first step today.
           </p>
         </div>
@@ -156,7 +156,7 @@ export default function Families({ onNavigate }: Props) {
                 <form onSubmit={submitInterest} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Parent / Guardian Name <span className="text-coral-500">*</span></label>
+                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Parent / Guardian Name <span className="text-error-500">*</span></label>
                       <input
                         type="text"
                         required
@@ -167,7 +167,7 @@ export default function Families({ onNavigate }: Props) {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Email Address <span className="text-coral-500">*</span></label>
+                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Email Address <span className="text-error-500">*</span></label>
                       <input
                         type="email"
                         required
@@ -256,7 +256,7 @@ export default function Families({ onNavigate }: Props) {
                 <form onSubmit={submitVisit} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Your Name <span className="text-coral-500">*</span></label>
+                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Your Name <span className="text-error-500">*</span></label>
                       <input
                         type="text"
                         required
@@ -267,7 +267,7 @@ export default function Families({ onNavigate }: Props) {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Email <span className="text-coral-500">*</span></label>
+                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Email <span className="text-error-500">*</span></label>
                       <input
                         type="email"
                         required
@@ -330,7 +330,7 @@ export default function Families({ onNavigate }: Props) {
                   <button
                     type="submit"
                     disabled={vSubmitting}
-                    className="w-full py-4 bg-amber-500 hover:bg-amber-600 disabled:bg-amber-300 text-white font-semibold rounded-xl transition-colors text-sm"
+                    className="w-full py-4 bg-amber-500 hover:bg-amber-600 disabled:bg-amber-300 text-brand-900 font-semibold rounded-xl transition-colors text-sm"
                   >
                     {vSubmitting ? 'Sending…' : 'Request a Visit'}
                   </button>

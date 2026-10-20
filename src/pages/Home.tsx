@@ -36,9 +36,9 @@ const bridgeStops = [
 ];
 
 const journeySteps = [
-  { step: 'Know', tagline: 'Learn it.', desc: 'Children learn each skill at their own level and pace, with a teacher who knows exactly where they are.', example: 'A second grader reads at their own level in a small group of three.', color: 'bg-brand-600', img: 'https://images.pexels.com/photos/8423098/pexels-photo-8423098.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
-  { step: 'Apply', tagline: 'Use it.', desc: 'Skills go straight into real projects, roles, and problems — not worksheets that get filed away.', example: 'Third graders run a classroom store and practice making change.', color: 'bg-amber-500', img: 'https://images.pexels.com/photos/7868892/pexels-photo-7868892.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
-  { step: 'Explore', tagline: 'Go see it.', desc: 'Children take their learning into the wider world and meet the people who actually do the work.', example: 'A local builder visits and students plan a budget for a birdhouse.', color: 'bg-coral-500', img: 'https://images.pexels.com/photos/9291043/pexels-photo-9291043.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { step: 'Know', tagline: 'Learn it.', desc: 'Children learn each skill at their own level and pace, with a teacher who knows exactly where they are.', example: 'A second grader reads at their own level in a small group of three.', color: 'bg-brand-700 text-white', img: 'https://images.pexels.com/photos/8423098/pexels-photo-8423098.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { step: 'Apply', tagline: 'Use it.', desc: 'Skills go straight into real projects, roles, and problems — not worksheets that get filed away.', example: 'Third graders run a classroom store and practice making change.', color: 'bg-amber-500 text-brand-900', img: 'https://images.pexels.com/photos/7868892/pexels-photo-7868892.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { step: 'Explore', tagline: 'Go see it.', desc: 'Children take their learning into the wider world and meet the people who actually do the work.', example: 'A local builder visits and students plan a budget for a birdhouse.', color: 'bg-brand-800 text-white', img: 'https://images.pexels.com/photos/9291043/pexels-photo-9291043.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
 ];
 
 export default function Home({ onNavigate }: HomeProps) {
@@ -94,7 +94,7 @@ export default function Home({ onNavigate }: HomeProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => nav('families')}
-                className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-white font-semibold rounded-full text-base transition-all hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-brand-900 font-semibold rounded-full text-base transition-all hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2"
               >
                 Book a Visit <ArrowRight className="w-4 h-4" />
               </button>
@@ -125,18 +125,20 @@ export default function Home({ onNavigate }: HomeProps) {
               <h2 className="font-display font-bold text-4xl md:text-5xl text-neutral-900 mt-3 mb-6 leading-tight">
                 Every child is capable of more.
               </h2>
+              <p className='mt-4 mb-8 text-sm'>At Bridges Academy, academic growth is just the beginning. We intentionally teach the skills, build the confidence, and create the experiences students need to thrive in school, in life, and in the world beyond the classroom.
+              </p>
               <blockquote className="border-l-4 border-amber-400 pl-5 mb-8">
                 <p className="text-neutral-600 text-lg italic leading-relaxed">
-                  "I met a student in second grade and again in fifth, when he was performing several grade levels below expectations. With the right support, high expectations, and someone who believed in him, he grew and reached grade level."
+                “I met a student in second grade and saw him again in fifth, still performing several grade levels below expectations. With the right support, high expectations, and someone who believed in him, he grew and reached grade level. That experience reinforced what I believe about every child: their current performance does not define their potential.”
                 </p>
                 <cite className="block mt-3 text-sm font-semibold text-neutral-700 not-italic">— Monique Bridges, Founder</cite>
               </blockquote>
               <div className="space-y-4">
                 {[
-                  { label: 'See their potential', body: 'High expectations and personal support for every child, from day one.' },
-                  { label: 'Close their gaps', body: 'Strong academics that meet each child at their own level and pace.' },
-                  { label: 'Build their confidence', body: 'Life skills that last — asking for help, handling big feelings, solving conflict, speaking up.' },
-                  { label: 'Prepare for a successful future', body: 'Real-world experience with trades, banks, careers, and places beyond their own city.' },
+                  { label: 'See their potential', body: 'Every child deserves to be known, challenged, and supported through high expectations and individualized attention from day one.' },
+                  { label: 'Close their gaps', body: 'Personalized academic instruction meets students where they are and helps them build the skills they need to move forward.' },
+                  { label: 'Build their confidence', body: 'Students practice essential life skills, from asking for help and managing big feelings to resolving conflict, communicating clearly, and advocating for themselves.' },
+                  { label: 'Expand their possibilities', body: 'Through real-world experiences, career exploration, financial literacy, and exposure to opportunities beyond their everyday surroundings, students begin to discover what they can become.' },
                 ].map((item) => (
                   <div key={item.label} className="flex gap-3">
                     <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0 mt-2" />
@@ -159,9 +161,9 @@ export default function Home({ onNavigate }: HomeProps) {
                 alt="Children working together in a supportive classroom environment"
                 className="rounded-2xl object-cover w-full h-80 md:h-96 shadow-xl"
               />
-              <div className="absolute -bottom-6 -left-6 bg-amber-500 text-white rounded-2xl p-5 shadow-lg hidden md:block">
+              <div className="absolute -bottom-6 -left-6 bg-amber-500 text-brand-900 rounded-2xl p-5 shadow-lg hidden md:block">
                 <p className="font-display font-bold text-3xl">125</p>
-                <p className="text-sm font-medium text-amber-100 mt-0.5">families by December 2026</p>
+                <p className="text-sm font-medium text-brand-800 mt-0.5">families by December 2026</p>
               </div>
             </div>
           </div>
@@ -183,7 +185,7 @@ export default function Home({ onNavigate }: HomeProps) {
                 <div className="relative h-52 overflow-hidden">
                   <img src={s.img} alt={s.step} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent" />
-                  <div className={`absolute top-4 left-4 ${s.color} text-white text-xs font-bold px-3 py-1 rounded-full`}>
+                  <div className={`absolute top-4 left-4 ${s.color} text-xs font-bold px-3 py-1 rounded-full`}>
                     Step {i + 1}
                   </div>
                 </div>
@@ -230,7 +232,7 @@ export default function Home({ onNavigate }: HomeProps) {
                   <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-amber-400/30 z-0" />
                 )}
                 <div className="bg-brand-800/60 backdrop-blur-sm border border-brand-700 rounded-2xl p-6 hover:bg-brand-700/60 transition-colors relative z-10">
-                  <div className="w-14 h-14 rounded-full bg-amber-500 flex items-center justify-center text-white font-display font-bold text-xl mb-4">
+                  <div className="w-14 h-14 rounded-full bg-amber-500 flex items-center justify-center text-brand-900 font-display font-bold text-xl mb-4">
                     {i + 1}
                   </div>
                   <h3 className="font-display font-bold text-2xl text-white mb-2">{stop.label}</h3>
@@ -277,10 +279,15 @@ export default function Home({ onNavigate }: HomeProps) {
           <div className={`transition-all duration-700 ${realWorld.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">Explore</span>
             <h2 className="font-display font-bold text-4xl md:text-5xl text-neutral-900 mt-3 mb-4">
-              Once a month, learning leaves the classroom.
+            Where learning meets the real world.
             </h2>
             <p className="text-neutral-600 mb-10 max-w-2xl">
-              Students visit real workplaces — banks, trades, businesses, and careers they may never have imagined. Families are invited to workshops so the learning continues at home.
+            Each month, Bridges students step beyond the classroom to explore Henry County and beyond. They visit workplaces, meet professionals, and experience industries firsthand — from exploring how a bank works to discovering skilled trades and learning directly from people in different careers. Along the way, students uncover interests, ask new questions, and begin to imagine futures they may never have considered.
+            <p className='mt-4'>
+            Explore is the third step of the Bridges learning model. Students take what they KNOW and APPLY and connect it to the world around them. Learning becomes something they can experience, question, and see in action.
+            </p>
+            <p className='mt-4'>Because discovering what’s possible shouldn’t have to wait until adulthood.
+            </p>
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
@@ -340,7 +347,7 @@ export default function Home({ onNavigate }: HomeProps) {
       </section>
 
       {/* ── Interest meeting banner ── */}
-      <section className="py-16 bg-coral-500">
+      <section className="py-16 bg-brand-900">
         <div ref={meeting.ref} className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center transition-all duration-700 ${meeting.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <span className="inline-block px-4 py-1.5 bg-white/20 text-white/90 text-sm font-medium rounded-full mb-4">
@@ -354,7 +361,7 @@ export default function Home({ onNavigate }: HomeProps) {
             </p>
             <button
               onClick={() => nav('involved')}
-              className="px-8 py-4 bg-white text-coral-600 font-semibold rounded-full hover:bg-coral-50 transition-colors text-base inline-flex items-center gap-2"
+              className="px-8 py-4 bg-amber-500 text-brand-900 font-semibold rounded-full hover:bg-amber-400 transition-colors text-base inline-flex items-center gap-2"
             >
               Reserve Your Spot <ArrowRight className="w-4 h-4" />
             </button>

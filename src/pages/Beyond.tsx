@@ -20,7 +20,7 @@ function useInView(threshold = 0.15) {
 const experiences = [
   { title: 'Local Businesses', desc: 'Students visit nearby businesses and learn how they operate — from bakeries to hardware stores.', icon: '🏪', color: 'bg-brand-50 border-brand-100' },
   { title: 'Trades & Crafts', desc: 'Electricians, plumbers, carpenters, and builders visit and show students what the work actually looks like.', icon: '🔧', color: 'bg-amber-50 border-amber-100' },
-  { title: 'Banking & Finance', desc: 'A trip to a real bank helps students understand saving, spending, and how money works.', icon: '🏦', color: 'bg-coral-50 border-coral-100' },
+  { title: 'Banking & Finance', desc: 'A trip to a real bank helps students understand saving, spending, and how money works.', icon: '🏦', color: 'bg-brand-50 border-brand-100' },
   { title: 'Careers & Professions', desc: 'Nurses, engineers, chefs, artists, and coaches share their stories and answer real questions.', icon: '💼', color: 'bg-neutral-50 border-neutral-200' },
   { title: 'Community Partners', desc: 'Local organizations welcome students for real visits that make the world feel bigger.', icon: '🤝', color: 'bg-brand-50 border-brand-100' },
   { title: 'Student Ventures', desc: 'Students plan and run their own small ventures — setting savings goals and seeing results.', icon: '🌱', color: 'bg-amber-50 border-amber-100' },
@@ -36,7 +36,7 @@ const workshops = [
 const locations = [
   { name: 'Stockbridge', type: 'Primary area', color: 'bg-brand-600' },
   { name: 'McDonough', type: 'Nearby', color: 'bg-amber-500' },
-  { name: 'Locust Grove', type: 'Nearby', color: 'bg-coral-500' },
+  { name: 'Locust Grove', type: 'Nearby', color: 'bg-brand-800' },
   { name: 'Henry County', type: 'Surrounding area', color: 'bg-neutral-500' },
 ];
 
@@ -65,7 +65,7 @@ export default function Beyond({ onNavigate }: Props) {
           </p>
           <button
             onClick={() => nav('families')}
-            className="mt-8 px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-white font-semibold rounded-full transition-colors inline-flex items-center gap-2"
+            className="mt-8 px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-brand-900 font-semibold rounded-full transition-colors inline-flex items-center gap-2"
           >
             Book a Visit <ArrowRight className="w-4 h-4" />
           </button>
@@ -167,7 +167,7 @@ export default function Beyond({ onNavigate }: Props) {
               </div>
             </div>
             <div className="bg-amber-50 rounded-2xl p-8 border border-amber-100">
-              <Lightbulb className="w-8 h-8 text-amber-500 mb-4" />
+              <Lightbulb className="w-8 h-8 text-amber-700 mb-4" />
               <h3 className="font-display font-bold text-2xl text-neutral-900 mb-4">What student ventures look like</h3>
               <ul className="space-y-4">
                 {[
@@ -217,7 +217,7 @@ export default function Beyond({ onNavigate }: Props) {
           <Users className="w-10 h-10 text-brand-300 mx-auto mb-4" />
           <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">Are you a business, tradesperson, or mentor?</h2>
           <p className="text-brand-200 mb-8 max-w-xl mx-auto">Partner with Bridges Academy to give students real-world experiences they'll never forget — and be part of building Henry County's next generation.</p>
-          <button onClick={() => nav('involved')} className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-white font-semibold rounded-full transition-colors inline-flex items-center gap-2">
+          <button onClick={() => nav('involved')} className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-brand-900 font-semibold rounded-full transition-colors inline-flex items-center gap-2">
             Partner With Us <ArrowRight className="w-4 h-4" />
           </button>
         </div>
