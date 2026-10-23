@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import logo from '../images/logo.png';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 
@@ -36,7 +37,7 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
             aria-label="Carmel Academy. Built to Belong. Built to Become."
           >
             <img
-              src="./src/images/logo.png"
+              src={logo}
               alt="Carmel Academy logo"
               className="h-[4.5rem] md:h-20 w-auto shrink-0"
             />

@@ -1,4 +1,5 @@
 import { MapPin, Mail } from 'lucide-react';
+import logo from '../images/logo-white.png';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 
@@ -36,7 +37,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-4 mb-4">
               <span className="rounded-xl p-2 shrink-0 inline-flex">
-                <img src="/src/images/logo-white.png" alt="Carmel Academy" className="h-16 md:h-[4.5rem] w-auto" />
+                <img src={logo} alt="Carmel Academy" className="h-16 md:h-[4.5rem] w-auto" />
               </span>
             </div>
             <p className="text-brand-400 text-sm leading-relaxed max-w-sm">
