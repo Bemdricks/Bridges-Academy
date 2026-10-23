@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CheckCircle, AlertCircle, ChevronDown, ChevronUp, Calendar, UserPlus } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import Testimonials from '@/components/Testimonials';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 interface Props { onNavigate: (page: Page) => void; }
@@ -29,11 +30,11 @@ const grades = ['Pre-K', 'Kindergarten', 'Grade 1', 'Grade 2', 'Grade 3'];
 const times = ['Morning (9–11 am)', 'Midday (11 am–1 pm)', 'Afternoon (1–3 pm)'];
 
 const faqs = [
-  { q: 'What grades does Bridges Academy serve?', a: 'Bridges Academy opens in August 2027 as a K–3 school, serving Kindergarten through 3rd grade. The school is designed to grow over time.' },
-  { q: 'Where is the school located?', a: 'Bridges Academy will be in the Stockbridge area of Henry County, Georgia. The exact address will be announced once the location is confirmed. We serve families in Stockbridge, McDonough, Locust Grove, and the surrounding area.' },
+  { q: 'What grades does Carmel Academy serve?', a: 'Carmel Academy opens in August 2027 as a K–3 school, serving Kindergarten through 3rd grade. The school is designed to grow over time.' },
+  { q: 'Where is the school located?', a: 'Carmel Academy will be in the Stockbridge area of Henry County, Georgia. The exact address will be announced once the location is confirmed. We serve families in Stockbridge, McDonough, Locust Grove, and the surrounding area.' },
   { q: 'Is there a cost to attend?', a: 'Tuition and financial aid details are being finalized and will be shared once confirmed. Join the interest list to receive updates as details are announced.' },
   { q: 'What does a typical school day look like?', a: 'Every day includes a morning greeting circle, core learning in small groups, applied project time, leadership roles, explore time with guest visitors or ventures, and a closing circle. See Our Approach for the full picture.' },
-  { q: 'How is Bridges different from other K–3 schools?', a: 'Bridges teaches social-emotional skills, life skills, leadership, entrepreneurship, financial literacy, and real-world experience alongside strong academics — all by design, not by accident.' },
+  { q: 'How is Carmel different from other K–3 schools?', a: 'Carmel teaches social-emotional skills, life skills, leadership, entrepreneurship, financial literacy, and real-world experience alongside strong academics — all by design, not by accident.' },
   { q: 'How do I join the interest list?', a: 'Fill in the form on this page. It takes about a minute. You\'ll receive a confirmation and be among the first to hear updates, visit invitations, and enrollment news.' },
   { q: 'Can I visit before the school opens?', a: 'Yes. Book a visit using the form below and Monique\'s team will reach out to schedule a time.' },
   { q: 'When is the interest meeting?', a: 'A free interest meeting is planned for December 2026 at 6 p.m. The date and location will be confirmed soon. RSVP on the Get Involved page.' },
@@ -110,7 +111,7 @@ export default function Families({ onNavigate }: Props) {
           <span className="inline-block px-4 py-1.5 bg-brand-900/10 text-brand-900 text-sm font-medium rounded-full mb-6 border border-brand-900/20">For Families</span>
           <h1 className="font-display font-bold text-5xl md:text-6xl text-brand-900 mb-5">Join Us.</h1>
           <p className="text-brand-800 text-xl max-w-xl mx-auto leading-relaxed">
-            Bridges Academy opens August 2027 for K–3 students in Stockbridge and Henry County, Georgia. Take the first step today.
+            Carmel Academy opens August 2027 for K–3 students in Stockbridge and Henry County, Georgia. Take the first step today.
           </p>
         </div>
       </section>
@@ -149,7 +150,7 @@ export default function Families({ onNavigate }: Props) {
                 <div className="flex flex-col items-center gap-4 py-10 text-center">
                   <CheckCircle className="w-14 h-14 text-success-500" />
                   <h3 className="font-display font-bold text-2xl text-neutral-900">You're on the list!</h3>
-                  <p className="text-neutral-600 max-w-sm">Thank you for your interest in Bridges Academy. We'll be in touch with updates, visit invitations, and enrollment news.</p>
+                  <p className="text-neutral-600 max-w-sm">Thank you for your interest in Carmel Academy. We'll be in touch with updates, visit invitations, and enrollment news.</p>
                   <button onClick={() => setIDone(false)} className="mt-4 text-brand-700 text-sm font-medium hover:underline">Submit another response</button>
                 </div>
               ) : (
@@ -249,7 +250,7 @@ export default function Families({ onNavigate }: Props) {
                 <div className="flex flex-col items-center gap-4 py-10 text-center">
                   <CheckCircle className="w-14 h-14 text-success-500" />
                   <h3 className="font-display font-bold text-2xl text-neutral-900">Visit request received!</h3>
-                  <p className="text-neutral-600 max-w-sm">Thank you for your interest in visiting Bridges Academy. We'll be in touch shortly to confirm your visit.</p>
+                  <p className="text-neutral-600 max-w-sm">Thank you for your interest in visiting Carmel Academy. We'll be in touch shortly to confirm your visit.</p>
                   <button onClick={() => setVDone(false)} className="mt-4 text-brand-700 text-sm font-medium hover:underline">Submit another request</button>
                 </div>
               ) : (
@@ -396,6 +397,8 @@ export default function Families({ onNavigate }: Props) {
           </div>
         </div>
       </section>
+
+      <Testimonials />
     </div>
   );
 }

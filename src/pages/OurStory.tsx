@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { ArrowRight, Quote } from 'lucide-react';
+import Testimonials from '@/components/Testimonials';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 interface Props { onNavigate: (page: Page) => void; }
@@ -42,7 +43,7 @@ export default function OurStory({ onNavigate }: Props) {
           </h1>
           <p className="text-neutral-600 text-xl leading-relaxed max-w-2xl">
           Monique Bridges has spent her career building schools, developing teams, and creating environments where students can thrive. After opening schools in two states and growing each to more than 100 students in its first year, she is bringing that experience to her most personal undertaking yet: building the school she has always envisioned.
-          Bridges Academy was created around a simple belief: every child deserves to feel a sense of belonging, discover their potential, and develop the skills to thrive beyond the classroom.
+          Carmel Academy was created around a simple belief: every child deserves to feel a sense of belonging, discover their potential, and develop the skills to thrive beyond the classroom.
           </p>
         </div>
       </section>
@@ -80,7 +81,7 @@ export default function OurStory({ onNavigate }: Props) {
                 What changed was not the children. It was what they believed was possible.
                 </p>
                 <p>
-                That conviction became Bridges Academy: a school where belonging and excellence go hand in hand, learning connects to the real world, and every child is known, held to high standards, and given opportunities to discover what they can become.
+                That conviction became Carmel Academy: a school where belonging and excellence go hand in hand, learning connects to the real world, and every child is known, held to high standards, and given opportunities to discover what they can become.
                 </p>
                 <p><strong>Built to Belong. Built to Become.</strong>
                 </p>
@@ -97,7 +98,7 @@ export default function OurStory({ onNavigate }: Props) {
         </div>
       </section>
 
-      {/* Why Bridges exists */}
+      {/* Why Carmel exists */}
       <section className="py-20 md:py-28 bg-brand-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-amber-400 font-semibold text-sm uppercase tracking-widest">Why we exist</span>
@@ -106,7 +107,7 @@ export default function OurStory({ onNavigate }: Props) {
             The Stockbridge area is full of families who want more for their children — not just better test scores, but children who know how to handle hard moments, speak up for themselves, try new things, and see a wide future ahead of them.
           </p>
           <p className="text-brand-300 text-lg leading-relaxed">
-            Bridges Academy exists to be that school. A place where a child is known by name, challenged with high expectations, and given the skills — social, emotional, academic, and practical — to become the person they were built to become.
+            Carmel Academy exists to be that school. A place where a child is known by name, challenged with high expectations, and given the skills — social, emotional, academic, and practical — to become the person they were built to become.
           </p>
         </div>
       </section>
@@ -147,7 +148,7 @@ export default function OurStory({ onNavigate }: Props) {
             <div className="grid sm:grid-cols-3 gap-8">
               {[
                 { name: 'Monique Bridges', role: 'Founder & Director', bio: 'Two schools. Two states. 100+ students in year one each time. Monique has dedicated her career to building schools where every child is seen and challenged to their fullest potential.', initial: 'M' },
-                { name: 'Derrick Robinson', role: 'Team Member', bio: 'Derrick brings deep experience and a genuine commitment to the Bridges Academy mission. Full bio coming soon as the team prepares for the August 2027 opening.', initial: 'D' },
+                { name: 'Derrick Robinson', role: 'Team Member', bio: 'Derrick brings deep experience and a genuine commitment to the Carmel Academy mission. Full bio coming soon as the team prepares for the August 2027 opening.', initial: 'D' },
                 { name: 'Nutan Dossa', role: 'Team Member', bio: 'Nutan is dedicated to creating learning environments where all students thrive. Full bio coming soon as the team prepares for the August 2027 opening.', initial: 'N' },
               ].map((person) => (
                 <div key={person.name} className="bg-neutral-50 rounded-2xl p-8 border border-neutral-100 hover:shadow-md transition-shadow text-center">
@@ -170,11 +171,13 @@ export default function OurStory({ onNavigate }: Props) {
         </div>
       </section>
 
+      <Testimonials tone="stone" />
+
       {/* CTA */}
       <section className="py-16 bg-amber-500">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display font-bold text-3xl md:text-4xl text-brand-900 mb-4">Ready to learn more?</h2>
-          <p className="text-brand-800 mb-8">Join our interest list and be first to hear news about Bridges Academy.</p>
+          <p className="text-brand-800 mb-8">Join our interest list and be first to hear news about Carmel Academy.</p>
           <button onClick={() => nav('families')} className="px-8 py-4 bg-white text-amber-700 font-semibold rounded-full hover:bg-amber-50 transition-colors inline-flex items-center gap-2">
             Join the Interest List <ArrowRight className="w-4 h-4" />
           </button>

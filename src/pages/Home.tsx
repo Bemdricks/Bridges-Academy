@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, BookOpen, Wrench, Globe, Star, Heart, ChevronDown } from 'lucide-react';
+import Testimonials from '@/components/Testimonials';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 
@@ -36,9 +37,9 @@ const bridgeStops = [
 ];
 
 const journeySteps = [
-  { step: 'Know', tagline: 'Learn it.', desc: 'Children learn each skill at their own level and pace, with a teacher who knows exactly where they are.', example: 'A second grader reads at their own level in a small group of three.', color: 'bg-brand-700 text-white', img: 'https://images.pexels.com/photos/8423098/pexels-photo-8423098.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
-  { step: 'Apply', tagline: 'Use it.', desc: 'Skills go straight into real projects, roles, and problems — not worksheets that get filed away.', example: 'Third graders run a classroom store and practice making change.', color: 'bg-amber-500 text-brand-900', img: 'https://images.pexels.com/photos/7868892/pexels-photo-7868892.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
-  { step: 'Explore', tagline: 'Go see it.', desc: 'Children take their learning into the wider world and meet the people who actually do the work.', example: 'A local builder visits and students plan a budget for a birdhouse.', color: 'bg-brand-800 text-white', img: 'https://images.pexels.com/photos/9291043/pexels-photo-9291043.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { step: 'Know', tagline: 'Learn it.', desc: 'Children learn each skill at their own level and pace, with a teacher who knows exactly where they are.', example: 'A second grader reads at their own level in a small group of three.', color: 'bg-brand-700 text-white', img: 'https://images.pexels.com/photos/5905861/pexels-photo-5905861.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { step: 'Apply', tagline: 'Use it.', desc: 'Skills go straight into real projects, roles, and problems — not worksheets that get filed away.', example: 'Third graders run a classroom store and practice making change.', color: 'bg-amber-500 text-brand-900', img: 'https://images.pexels.com/photos/4544774/pexels-photo-4544774.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { step: 'Explore', tagline: 'Go see it.', desc: 'Children take their learning into the wider world and meet the people who actually do the work.', example: 'A local builder visits and students plan a budget for a birdhouse.', color: 'bg-brand-800 text-white', img: 'https://images.pexels.com/photos/5240515/pexels-photo-5240515.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
 ];
 
 export default function Home({ onNavigate }: HomeProps) {
@@ -67,7 +68,7 @@ export default function Home({ onNavigate }: HomeProps) {
         {/* Background image overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/3992949/pexels-photo-3992949.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)' }}
+          style={{ backgroundImage: 'url(https://images.pexels.com/photos/5905450/pexels-photo-5905450.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)' }}
         />
         <div className="absolute inset-0 bg-brand-900/80" />
         {/* Decorative arc */}
@@ -86,7 +87,7 @@ export default function Home({ onNavigate }: HomeProps) {
               Built to Belong.<br />Built to Become.
             </h1>
             <p className="text-white/80 text-lg sm:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
-              Bridges Academy is a new K–3 school in the Stockbridge area for families who know their child is capable of more. We see their potential, close their gaps, build their confidence, and prepare them for a successful future.
+              Carmel Academy is a new K–3 school in the Stockbridge area for families who know their child is capable of more. We see their potential, close their gaps, build their confidence, and prepare them for a successful future.
             </p>
             <p className="text-amber-300 text-sm mb-10">
               Founded by Monique Bridges — two schools, two states, 100+ students each in year one.
@@ -116,7 +117,7 @@ export default function Home({ onNavigate }: HomeProps) {
         </div>
       </section>
 
-      {/* ── What makes Bridges different ── */}
+      {/* ── What makes Carmel different ── */}
       <section id="different" className="py-20 md:py-28 bg-neutral-50">
         <div ref={diff.ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`grid lg:grid-cols-2 gap-14 items-center transition-all duration-700 ${diff.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -125,7 +126,7 @@ export default function Home({ onNavigate }: HomeProps) {
               <h2 className="font-display font-bold text-4xl md:text-5xl text-neutral-900 mt-3 mb-6 leading-tight">
                 Every child is capable of more.
               </h2>
-              <p className='mt-4 mb-8 text-sm'>At Bridges Academy, academic growth is just the beginning. We intentionally teach the skills, build the confidence, and create the experiences students need to thrive in school, in life, and in the world beyond the classroom.
+              <p className='mt-4 mb-8 text-sm'>At Carmel Academy, academic growth is just the beginning. We intentionally teach the skills, build the confidence, and create the experiences students need to thrive in school, in life, and in the world beyond the classroom.
               </p>
               <blockquote className="border-l-4 border-amber-400 pl-5 mb-8">
                 <p className="text-neutral-600 text-lg italic leading-relaxed">
@@ -157,7 +158,7 @@ export default function Home({ onNavigate }: HomeProps) {
             </div>
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/5621962/pexels-photo-5621962.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                src="https://images.pexels.com/photos/6437479/pexels-photo-6437479.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
                 alt="Children working together in a supportive classroom environment"
                 className="rounded-2xl object-cover w-full h-80 md:h-96 shadow-xl"
               />
@@ -219,7 +220,7 @@ export default function Home({ onNavigate }: HomeProps) {
         </div>
         <div ref={bridge.ref} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-14 transition-all duration-700 ${bridge.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <span className="text-amber-400 font-semibold text-sm uppercase tracking-widest">The Bridges model</span>
+            <span className="text-amber-400 font-semibold text-sm uppercase tracking-widest">The Carmel model</span>
             <h2 className="font-display font-bold text-4xl md:text-5xl text-white mt-3">
               A child's world keeps growing.
             </h2>
@@ -253,7 +254,7 @@ export default function Home({ onNavigate }: HomeProps) {
               What we teach on purpose.
             </h2>
             <p className="mt-4 text-neutral-600 max-w-xl mx-auto">
-              Most schools teach academics and hope everything else follows. Bridges teaches the rest on purpose.
+              Most schools teach academics and hope everything else follows. Carmel teaches the rest on purpose.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -282,18 +283,18 @@ export default function Home({ onNavigate }: HomeProps) {
             Where learning meets the real world.
             </h2>
             <p className="text-neutral-600 mb-10 max-w-2xl">
-            Each month, Bridges students step beyond the classroom to explore Henry County and beyond. They visit workplaces, meet professionals, and experience industries firsthand — from exploring how a bank works to discovering skilled trades and learning directly from people in different careers. Along the way, students uncover interests, ask new questions, and begin to imagine futures they may never have considered.
+            Each month, Carmel students step beyond the classroom to explore Henry County and beyond. They visit workplaces, meet professionals, and experience industries firsthand — from exploring how a bank works to discovering skilled trades and learning directly from people in different careers. Along the way, students uncover interests, ask new questions, and begin to imagine futures they may never have considered.
             <p className='mt-4'>
-            Explore is the third step of the Bridges learning model. Students take what they KNOW and APPLY and connect it to the world around them. Learning becomes something they can experience, question, and see in action.
+            Explore is the third step of the Carmel learning model. Students take what they KNOW and APPLY and connect it to the world around them. Learning becomes something they can experience, question, and see in action.
             </p>
             <p className='mt-4'>Because discovering what’s possible shouldn’t have to wait until adulthood.
             </p>
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                { img: 'https://images.pexels.com/photos/9291043/pexels-photo-9291043.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Real-world explorations' },
-                { img: 'https://images.pexels.com/photos/7868889/pexels-photo-7868889.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Hands-on projects' },
-                { img: 'https://images.pexels.com/photos/31874024/pexels-photo-31874024.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Community learning' },
+                { img: 'https://images.pexels.com/photos/1128318/pexels-photo-1128318.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Real-world explorations' },
+                { img: 'https://images.pexels.com/photos/4260325/pexels-photo-4260325.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Hands-on projects' },
+                { img: 'https://images.pexels.com/photos/5905621/pexels-photo-5905621.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Community learning' },
               ].map((item) => (
                 <div key={item.label} className="relative rounded-2xl overflow-hidden h-56 group">
                   <img src={item.img} alt={item.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -324,7 +325,7 @@ export default function Home({ onNavigate }: HomeProps) {
             <div className="grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
               {[
                 { name: 'Monique Bridges', role: 'Founder & Director', bio: 'Two schools. Two states. 100+ students in year one each time. Monique has dedicated her career to building schools where every child is seen and challenged.' },
-                { name: 'Derrick Robinson', role: 'Team Member', bio: 'Bio coming soon. Derrick brings expertise and dedication to the Bridges Academy mission.' },
+                { name: 'Derrick Robinson', role: 'Team Member', bio: 'Bio coming soon. Derrick brings expertise and dedication to the Carmel Academy mission.' },
                 { name: 'Nutan Dossa', role: 'Team Member', bio: 'Bio coming soon. Nutan is committed to creating an environment where all learners thrive.' },
               ].map((person) => (
                 <div key={person.name} className="bg-white rounded-2xl p-7 border border-neutral-100 hover:shadow-md transition-shadow text-center">
@@ -345,6 +346,8 @@ export default function Home({ onNavigate }: HomeProps) {
           </div>
         </div>
       </section>
+
+      <Testimonials />
 
       {/* ── Interest meeting banner ── */}
       <section className="py-16 bg-brand-900">
@@ -373,7 +376,7 @@ export default function Home({ onNavigate }: HomeProps) {
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display font-bold text-4xl md:text-5xl text-neutral-900 mb-4">
-            Is Bridges the right fit for your family?
+            Is Carmel the right fit for your family?
           </h2>
           <p className="text-neutral-600 text-lg mb-10">
             Tell us a little about your family. It takes about a minute.

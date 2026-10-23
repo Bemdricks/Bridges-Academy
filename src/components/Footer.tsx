@@ -18,7 +18,7 @@ export default function Footer({ onNavigate }: FooterProps) {
       <div className="bg-amber-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <p className="font-display font-bold text-2xl text-brand-900">Is Bridges the right fit for your family?</p>
+            <p className="font-display font-bold text-2xl text-brand-900">Is Carmel the right fit for your family?</p>
             <p className="text-brand-800 mt-1">Tell us a little about your family. It takes about a minute.</p>
           </div>
           <button
@@ -35,10 +35,9 @@ export default function Footer({ onNavigate }: FooterProps) {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-4 mb-4">
-              <img src="/logo.png" alt="Bridges Academy" className="h-[4.5rem] md:h-20 w-auto bg-white rounded-lg shrink-0" />
-              <p className="text-brand-300 font-display italic text-base sm:text-lg leading-tight">
-                Built to Belong.<br />Built to Become.
-              </p>
+              <span className="rounded-xl p-2 shrink-0 inline-flex">
+                <img src="/src/images/logo-white.png" alt="Carmel Academy" className="h-16 md:h-[4.5rem] w-auto" />
+              </span>
             </div>
             <p className="text-brand-400 text-sm leading-relaxed max-w-sm">
               A new K–3 school in the Stockbridge area of Henry County, Georgia. Opening August 2027.
@@ -50,7 +49,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </div>
               <div className="flex items-center gap-2 text-brand-400 text-sm">
                 <Mail className="w-4 h-4 text-brand-300 flex-shrink-0" />
-                <span>info@bridgesacademy.org</span>
+                <span>info@carmelacademy.cc</span>
               </div>
             </div>
           </div>
@@ -113,7 +112,7 @@ export default function Footer({ onNavigate }: FooterProps) {
 
         <div className="mt-12 pt-8 border-t border-brand-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-brand-400 text-xs">
-            &copy; {new Date().getFullYear()} Bridges Academy. All rights reserved.
+            &copy; {new Date().getFullYear()} Carmel Academy. All rights reserved.
           </p>
           <p className="text-brand-400 text-xs">
             Stockbridge &bull; McDonough &bull; Locust Grove &bull; Henry County, GA

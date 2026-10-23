@@ -61,7 +61,7 @@ export default function OurApproach({ onNavigate }: Props) {
           </span>
           <h1 className="font-display font-bold text-5xl md:text-6xl text-white mb-6">Our Approach</h1>
           <p className="text-white/80 text-lg max-w-2xl mx-auto leading-relaxed">
-            Most schools teach academics and hope everything else follows. Bridges teaches the rest on purpose — so every child graduates elementary school ready for whatever comes next.
+            Most schools teach academics and hope everything else follows. Carmel teaches the rest on purpose — so every child graduates elementary school ready for whatever comes next.
           </p>
           <button
             onClick={() => nav('families')}
@@ -156,13 +156,13 @@ export default function OurApproach({ onNavigate }: Props) {
         </div>
       </section>
 
-      {/* Day at Bridges */}
+      {/* Day at Carmel */}
       <section className="py-20 md:py-28 bg-neutral-50">
         <div ref={dayRef.ref} className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`transition-all duration-700 ${dayRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="text-center mb-14">
               <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">Daily rhythm</span>
-              <h2 className="font-display font-bold text-4xl md:text-5xl text-neutral-900 mt-3">A day at Bridges.</h2>
+              <h2 className="font-display font-bold text-4xl md:text-5xl text-neutral-900 mt-3">A day at Carmel.</h2>
               <p className="text-neutral-600 mt-4 max-w-xl mx-auto">Every day has a rhythm that builds belonging, learning, and confidence — from the first greeting to the closing circle.</p>
             </div>
             <div className="relative">
@@ -211,7 +211,7 @@ export default function OurApproach({ onNavigate }: Props) {
       <section className="py-20 bg-brand-900">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display font-bold text-4xl text-white mb-4">Come see it for yourself.</h2>
-          <p className="text-brand-300 mb-8">Book a visit and see the Bridges approach in action.</p>
+          <p className="text-brand-300 mb-8">Book a visit and see the Carmel approach in action.</p>
           <button onClick={() => nav('families')} className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-brand-900 font-semibold rounded-full transition-colors inline-flex items-center gap-2">
             Book a Visit <ArrowRight className="w-4 h-4" />
           </button>

@@ -28,7 +28,7 @@ const experiences = [
 
 const workshops = [
   { title: 'How to Support Learning at Home', desc: 'Practical tools for continuing the classroom work at home, without stress.' },
-  { title: 'Understanding the Bridges Approach', desc: 'A deeper look at how Know, Apply, Explore works and what it looks like for your child.' },
+  { title: 'Understanding the Carmel Approach', desc: 'A deeper look at how Know, Apply, Explore works and what it looks like for your child.' },
   { title: 'Life Skills in Everyday Life', desc: 'How to practice asking for help, emotional regulation, and conflict resolution as a family.' },
   { title: 'Financial Literacy for Families', desc: 'Simple ways to bring money conversations into your home in ways children understand.' },
 ];
@@ -80,18 +80,18 @@ export default function Beyond({ onNavigate }: Props) {
               <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">The Explore step</span>
               <h2 className="font-display font-bold text-4xl text-neutral-900 mt-3 mb-6">The world is the classroom.</h2>
               <p className="text-neutral-600 leading-relaxed mb-5">
-                At Bridges, learning doesn't stop at the school door. Once a month, students step out into Henry County and beyond — visiting real workplaces, meeting people who do real work, and seeing themselves in futures they may not have imagined.
+                At Carmel, learning doesn't stop at the school door. Once a month, students step out into Henry County and beyond — visiting real workplaces, meeting people who do real work, and seeing themselves in futures they may not have imagined.
               </p>
               <p className="text-neutral-600 leading-relaxed">
-                This is the Explore step — the third and outermost ring of the Bridges model. Students take what they Know and have Applied, and they test it in the real world.
+                This is the Explore step — the third and outermost ring of the Carmel model. Students take what they Know and have Applied, and they test it in the real world.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { img: 'https://images.pexels.com/photos/9291043/pexels-photo-9291043.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Field explorations' },
-                { img: 'https://images.pexels.com/photos/7868824/pexels-photo-7868824.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Hands-on projects' },
-                { img: 'https://images.pexels.com/photos/31874024/pexels-photo-31874024.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Community visits' },
-                { img: 'https://images.pexels.com/photos/9302794/pexels-photo-9302794.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Real-world discovery' },
+                { img: 'https://images.pexels.com/photos/12887137/pexels-photo-12887137.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Field explorations' },
+                { img: 'https://images.pexels.com/photos/4544774/pexels-photo-4544774.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Hands-on projects' },
+                { img: 'https://images.pexels.com/photos/12887055/pexels-photo-12887055.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Community visits' },
+                { img: 'https://images.pexels.com/photos/5905479/pexels-photo-5905479.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Real-world discovery' },
               ].map((item) => (
                 <div key={item.label} className="relative rounded-xl overflow-hidden h-36">
                   <img src={item.img} alt={item.label} className="w-full h-full object-cover" />
@@ -130,7 +130,7 @@ export default function Beyond({ onNavigate }: Props) {
           <div className="text-center mb-12">
             <span className="text-amber-400 font-semibold text-sm uppercase tracking-widest">Our community</span>
             <h2 className="font-display font-bold text-4xl text-white mt-3">Serving Henry County.</h2>
-            <p className="text-brand-300 mt-4 max-w-lg mx-auto">Bridges Academy serves families across Stockbridge, McDonough, Locust Grove, and the wider Henry County area.</p>
+            <p className="text-brand-300 mt-4 max-w-lg mx-auto">Carmel Academy serves families across Stockbridge, McDonough, Locust Grove, and the wider Henry County area.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {locations.map((loc) => (
@@ -155,7 +155,7 @@ export default function Beyond({ onNavigate }: Props) {
               <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">Student ventures</span>
               <h2 className="font-display font-bold text-4xl text-neutral-900 mt-3 mb-5">Little leaders. Real goals.</h2>
               <p className="text-neutral-600 leading-relaxed mb-5">
-                At Bridges, students don't just learn about money — they practice it. Each student works toward a savings goal, and the class can run a small venture together: making something, selling something, or solving a problem for their community.
+                At Carmel, students don't just learn about money — they practice it. Each student works toward a savings goal, and the class can run a small venture together: making something, selling something, or solving a problem for their community.
               </p>
               <p className="text-neutral-600 leading-relaxed mb-6">
                 This builds financial literacy, responsibility, and the confidence that comes from seeing a plan through to the end.
@@ -216,7 +216,7 @@ export default function Beyond({ onNavigate }: Props) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Users className="w-10 h-10 text-brand-300 mx-auto mb-4" />
           <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">Are you a business, tradesperson, or mentor?</h2>
-          <p className="text-brand-200 mb-8 max-w-xl mx-auto">Partner with Bridges Academy to give students real-world experiences they'll never forget — and be part of building Henry County's next generation.</p>
+          <p className="text-brand-200 mb-8 max-w-xl mx-auto">Partner with Carmel Academy to give students real-world experiences they'll never forget — and be part of building Henry County's next generation.</p>
           <button onClick={() => nav('involved')} className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-brand-900 font-semibold rounded-full transition-colors inline-flex items-center gap-2">
             Partner With Us <ArrowRight className="w-4 h-4" />
           </button>

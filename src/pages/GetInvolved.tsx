@@ -115,7 +115,7 @@ export default function GetInvolved({ onNavigate }: Props) {
           <span className="inline-block px-4 py-1.5 bg-white/20 text-white text-sm font-medium rounded-full mb-6 border border-white/30">Get Involved</span>
           <h1 className="font-display font-bold text-5xl md:text-6xl text-white mb-5">Be part of building something.</h1>
           <p className="text-white/90 text-xl max-w-2xl mx-auto leading-relaxed">
-            Bridges Academy is being built by a community that believes every child deserves more. Whether you're a family, a partner, or a future team member — there's a place for you here.
+            Carmel Academy is being built by a community that believes every child deserves more. Whether you're a family, a partner, or a future team member — there's a place for you here.
           </p>
         </div>
       </section>
@@ -203,7 +203,7 @@ export default function GetInvolved({ onNavigate }: Props) {
           {/* Partner */}
           {activeTab === 'partner' && (
             <div className="bg-white rounded-2xl p-8 border border-neutral-100 shadow-sm">
-              <h2 className="font-display font-bold text-2xl text-neutral-900 mb-2">Partner With Bridges</h2>
+              <h2 className="font-display font-bold text-2xl text-neutral-900 mb-2">Partner With Carmel</h2>
               <p className="text-neutral-500 text-sm mb-7">Bring your expertise into the classroom. Help students see what's possible. Tell us about yourself and we'll be in touch.</p>
               {partnerDone ? (
                 <SuccessCard headline="Thank you for reaching out!" sub="We're excited to connect. Monique's team will be in touch about how you can be part of the real-world experience program." onReset={() => setPartnerDone(false)} />
@@ -236,7 +236,7 @@ export default function GetInvolved({ onNavigate }: Props) {
                   </div>
                   {partnerError && <ErrorMsg msg={partnerError} />}
                   <button type="submit" disabled={partnerSubmitting} className="w-full py-4 bg-brand-700 hover:bg-brand-800 disabled:bg-brand-400 text-white font-semibold rounded-xl transition-colors text-sm">
-                    {partnerSubmitting ? 'Sending…' : 'Partner With Bridges'}
+                    {partnerSubmitting ? 'Sending…' : 'Partner With Carmel'}
                   </button>
                 </form>
               )}
@@ -247,9 +247,9 @@ export default function GetInvolved({ onNavigate }: Props) {
           {activeTab === 'team' && (
             <div className="bg-white rounded-2xl p-8 border border-neutral-100 shadow-sm">
               <h2 className="font-display font-bold text-2xl text-neutral-900 mb-2">Join Our Team</h2>
-              <p className="text-neutral-500 text-sm mb-7">Bridges Academy is looking for educators who believe every child can thrive. Tell us about yourself — we'll be in touch as hiring begins.</p>
+              <p className="text-neutral-500 text-sm mb-7">Carmel Academy is looking for educators who believe every child can thrive. Tell us about yourself — we'll be in touch as hiring begins.</p>
               {teamDone ? (
-                <SuccessCard headline="We'd love to connect!" sub="Thank you for your interest in joining the Bridges Academy team. We'll be in touch as our hiring process begins ahead of the August 2027 opening." onReset={() => setTeamDone(false)} />
+                <SuccessCard headline="We'd love to connect!" sub="Thank you for your interest in joining the Carmel Academy team. We'll be in touch as our hiring process begins ahead of the August 2027 opening." onReset={() => setTeamDone(false)} />
               ) : (
                 <form onSubmit={submitTeam} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
@@ -271,7 +271,7 @@ export default function GetInvolved({ onNavigate }: Props) {
                   </div>
                   <div>
                     <label className={labelClass}>Tell us about yourself (optional)</label>
-                    <textarea rows={4} className={`${inputClass} resize-none`} placeholder="Your background, what draws you to Bridges Academy, what you'd bring to the team…" value={team.message} onChange={e => setTeam(s => ({ ...s, message: e.target.value }))} />
+                    <textarea rows={4} className={`${inputClass} resize-none`} placeholder="Your background, what draws you to Carmel Academy, what you'd bring to the team…" value={team.message} onChange={e => setTeam(s => ({ ...s, message: e.target.value }))} />
                   </div>
                   {teamError && <ErrorMsg msg={teamError} />}
                   <button type="submit" disabled={teamSubmitting} className="w-full py-4 bg-brand-700 hover:bg-brand-800 disabled:bg-brand-400 text-white font-semibold rounded-xl transition-colors text-sm">

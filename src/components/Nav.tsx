@@ -33,16 +33,13 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
           <button
             onClick={() => handleNav('home')}
             className="flex items-center gap-3 text-left"
-            aria-label="Bridges Academy. Built to Belong. Built to Become."
+            aria-label="Carmel Academy. Built to Belong. Built to Become."
           >
             <img
-              src="/logo.png"
-              alt=""
-              className="h-[4.5rem] md:h-20 w-auto bg-white rounded-lg shrink-0"
+              src="./src/images/logo.png"
+              alt="Carmel Academy logo"
+              className="h-[4.5rem] md:h-20 w-auto shrink-0"
             />
-            <span className="font-display italic text-brand-800 text-sm sm:text-base leading-tight">
-              Built to Belong.<br />Built to Become.
-            </span>
           </button>
 
           {/* Desktop nav */}
