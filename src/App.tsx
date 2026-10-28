@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import AdminApp from '@/admin/AdminApp';
 import Home from '@/pages/Home';
 import OurApproach from '@/pages/OurApproach';
 import OurStory from '@/pages/OurStory';
@@ -10,8 +11,15 @@ import GetInvolved from '@/pages/GetInvolved';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 
+function isAdminPath() {
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+  return path === '/admin';
+}
+
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
+
+  if (isAdminPath()) return <AdminApp />;
 
   const renderPage = () => {
     switch (currentPage) {

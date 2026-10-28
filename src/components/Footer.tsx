@@ -50,7 +50,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </div>
               <div className="flex items-center gap-2 text-brand-400 text-sm">
                 <Mail className="w-4 h-4 text-brand-300 flex-shrink-0" />
-                <span>info@carmelacademy.cc</span>
+                <span>info@carmelacademy.school</span>
               </div>
             </div>
           </div>
@@ -115,9 +115,12 @@ export default function Footer({ onNavigate }: FooterProps) {
           <p className="text-brand-400 text-xs">
             &copy; {new Date().getFullYear()} Carmel Academy. All rights reserved.
           </p>
-          <p className="text-brand-400 text-xs">
-            Stockbridge &bull; McDonough &bull; Locust Grove &bull; Henry County, GA
-          </p>
+          <div className="flex items-center gap-4">
+            <a href="/admin" className="text-brand-500 hover:text-white text-xs transition-colors">Staff</a>
+            <p className="text-brand-400 text-xs">
+              Stockbridge &bull; McDonough &bull; Locust Grove &bull; Henry County, GA
+            </p>
+          </div>
         </div>
       </div>
     </footer>

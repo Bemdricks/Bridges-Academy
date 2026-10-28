@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, BookOpen, Wrench, Globe, Star, Heart, ChevronDown } from 'lucide-react';
 import Testimonials from '@/components/Testimonials';
+import applyClassroom from '@/images/apply-classroom.jpg';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 
@@ -38,7 +39,7 @@ const bridgeStops = [
 
 const journeySteps = [
   { step: 'Know', tagline: 'Learn it.', desc: 'Children learn each skill at their own level and pace, with a teacher who knows exactly where they are.', example: 'A second grader reads at their own level in a small group of three.', color: 'bg-brand-700 text-white', img: 'https://images.pexels.com/photos/5905861/pexels-photo-5905861.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
-  { step: 'Apply', tagline: 'Use it.', desc: 'Skills go straight into real projects, roles, and problems — not worksheets that get filed away.', example: 'Third graders run a classroom store and practice making change.', color: 'bg-amber-500 text-brand-900', img: 'https://images.pexels.com/photos/4544774/pexels-photo-4544774.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { step: 'Apply', tagline: 'Use it.', desc: 'Skills go straight into real projects, roles, and problems — not worksheets that get filed away.', example: 'Third graders run a classroom store and practice making change.', color: 'bg-amber-500 text-brand-900', img: applyClassroom, position: 'center 22%' },
   { step: 'Explore', tagline: 'Go see it.', desc: 'Children take their learning into the wider world and meet the people who actually do the work.', example: 'A local builder visits and students plan a budget for a birdhouse.', color: 'bg-brand-800 text-white', img: 'https://images.pexels.com/photos/5240515/pexels-photo-5240515.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
 ];
 
@@ -184,7 +185,7 @@ export default function Home({ onNavigate }: HomeProps) {
             {journeySteps.map((s, i) => (
               <div key={s.step} className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <div className="relative h-52 overflow-hidden">
-                  <img src={s.img} alt={s.step} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img src={s.img} alt={s.step === 'Apply' ? 'Carmel Academy student working at her desk' : s.step} style={{ objectPosition: 'position' in s ? s.position : 'center' }} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent" />
                   <div className={`absolute top-4 left-4 ${s.color} text-xs font-bold px-3 py-1 rounded-full`}>
                     Step {i + 1}

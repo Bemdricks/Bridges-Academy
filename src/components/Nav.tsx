@@ -38,13 +38,13 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
           >
             <img
               src={logo}
-              alt="Carmel Academy logo"
+              alt=""
               className="h-[4.5rem] md:h-20 w-auto shrink-0"
             />
           </button>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <button
                 key={item.page}
@@ -69,7 +69,7 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
           {/* Mobile menu toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 rounded-lg transition-colors text-neutral-700 hover:bg-neutral-100"
+            className="lg:hidden p-2 rounded-lg transition-colors text-neutral-700 hover:bg-neutral-100"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -78,7 +78,7 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
 
         {/* Mobile dropdown */}
         {menuOpen && (
-          <div className="md:hidden border-t border-neutral-100 py-4 space-y-1 bg-white">
+          <div className="lg:hidden border-t border-neutral-100 py-4 space-y-1 bg-white">
             {navItems.map((item) => (
               <button
                 key={item.page}
