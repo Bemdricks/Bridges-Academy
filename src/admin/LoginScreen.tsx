@@ -30,10 +30,6 @@ export default function LoginScreen() {
         <div className="bg-white border border-neutral-200 rounded-3xl shadow-sm px-8 py-10">
           <div className="flex items-center gap-3 mb-8">
             <img src={logo} alt="" className="h-16 w-auto" />
-            <span className="font-display font-bold text-brand-900 leading-none">
-              <span className="block text-xl">Carmel</span>
-              <span className="block text-xl mt-1">Academy</span>
-            </span>
           </div>
           <h1 className="font-display font-bold text-3xl text-neutral-900">Staff sign in</h1>
           <p className="text-neutral-600 text-sm mt-2 mb-8">

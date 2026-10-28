@@ -290,7 +290,7 @@ export default function GetInvolved({ onNavigate }: Props) {
               <p className="text-neutral-500 text-sm mb-8">Have a question not answered on the site? We'd love to hear from you.</p>
               <div className="space-y-5">
                 {[
-                  { icon: Mail, label: 'Email', value: 'info@bridgesacademy.org', type: 'email' },
+                  { icon: Mail, label: 'Email', value: 'info@carmelacademy.school', type: 'email' },
                   { icon: Phone, label: 'Phone', value: 'Coming soon', type: 'text' },
                   { icon: MapPin, label: 'Location', value: 'Stockbridge area, Henry County, Georgia', type: 'text' },
                 ].map((item) => {
