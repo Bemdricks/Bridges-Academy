@@ -89,7 +89,7 @@ export default function OurStory({ onNavigate }: Props) {
               <blockquote className="mt-7 border-l-4 border-amber-400 pl-5">
                 <Quote className="w-6 h-6 text-amber-700 mb-2" />
                 <p className="text-neutral-700 italic leading-relaxed text-lg">
-                  "I met a student in second grade and again in fifth, when he was performing several grade levels below expectations. With the right support, high expectations, and someone who believed in him, he grew and reached grade level."
+                  "A child’s potential is never in question. Our job is to give them the support, the expectations, and the people who make it visible."
                 </p>
                 <cite className="block mt-3 text-sm font-semibold text-neutral-700 not-italic">— Monique Bridges, Founder</cite>
               </blockquote>
