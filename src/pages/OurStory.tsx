@@ -104,7 +104,7 @@ export default function OurStory({ onNavigate }: Props) {
           <span className="text-amber-400 font-semibold text-sm uppercase tracking-widest">Why we exist</span>
           <h2 className="font-display font-bold text-4xl md:text-5xl text-white mt-3 mb-8">Built for every child.</h2>
           <p className="text-brand-300 text-lg leading-relaxed mb-6">
-            The Stockbridge area is full of families who want more for their children — not just better test scores, but children who know how to handle hard moments, speak up for themselves, try new things, and see a wide future ahead of them.
+            The Stockbridge and South Fulton area is full of families who want more for their children — not just better test scores, but children who know how to handle hard moments, speak up for themselves, try new things, and see a wide future ahead of them.
           </p>
           <p className="text-brand-300 text-lg leading-relaxed">
             Carmel Academy exists to be that school. A place where a child is known by name, challenged with high expectations, and given the skills — social, emotional, academic, and practical — to become the person they were built to become.

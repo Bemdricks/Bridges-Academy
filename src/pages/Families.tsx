@@ -31,7 +31,7 @@ const times = ['Morning (9–11 am)', 'Midday (11 am–1 pm)', 'Afternoon (1–3
 
 const faqs = [
   { q: 'What grades does Carmel Academy serve?', a: 'Carmel Academy opens in August 2027 as a K–3 school, serving Kindergarten through 3rd grade. The school is designed to grow over time.' },
-  { q: 'Where is the school located?', a: 'Carmel Academy will be in the Stockbridge area of Henry County, Georgia. The exact address will be announced once the location is confirmed. We serve families in Stockbridge, McDonough, Locust Grove, and the surrounding area.' },
+  { q: 'Where is the school located?', a: 'Carmel Academy will be in the Stockbridge and South Fulton area of Henry County, Georgia. The exact address will be announced once the location is confirmed. We serve families in Stockbridge, South Fulton, McDonough, Locust Grove, and the surrounding area.' },
   { q: 'Is there a cost to attend?', a: 'Tuition and financial aid details are being finalized and will be shared once confirmed. Join the interest list to receive updates as details are announced.' },
   { q: 'What does a typical school day look like?', a: 'Every day includes a morning greeting circle, core learning in small groups, applied project time, leadership roles, explore time with guest visitors or ventures, and a closing circle. See Our Approach for the full picture.' },
   { q: 'How is Carmel different from other K–3 schools?', a: 'Carmel teaches social-emotional skills, life skills, leadership, entrepreneurship, financial literacy, and real-world experience alongside strong academics — all by design, not by accident.' },
@@ -111,7 +111,7 @@ export default function Families({ onNavigate }: Props) {
           <span className="inline-block px-4 py-1.5 bg-brand-900/10 text-brand-900 text-sm font-medium rounded-full mb-6 border border-brand-900/20">For Families</span>
           <h1 className="font-display font-bold text-5xl md:text-6xl text-brand-900 mb-5">Join Us.</h1>
           <p className="text-brand-800 text-xl max-w-xl mx-auto leading-relaxed">
-            Carmel Academy opens August 2027 for K–3 students in Stockbridge and Henry County, Georgia. Take the first step today.
+            Carmel Academy opens August 2027 for K–3 students in Stockbridge, South Fulton, and Henry County, Georgia. Take the first step today.
           </p>
         </div>
       </section>
@@ -350,7 +350,7 @@ export default function Families({ onNavigate }: Props) {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { label: 'Grades', value: 'K–3', note: 'Kindergarten through 3rd grade' },
-              { label: 'Opening', value: 'Aug 2027', note: 'Stockbridge area, Henry County, GA' },
+              { label: 'Opening', value: 'Aug 2027', note: 'Stockbridge and South Fulton, Henry County, GA' },
               { label: 'Tuition', value: 'TBA', note: 'Details to be announced' },
               { label: 'Class Size', value: 'Small', note: 'Small groups for personalized learning' },
             ].map((f) => (

@@ -82,16 +82,16 @@ export default function Home({ onNavigate }: HomeProps) {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-32 text-center">
           <div className={`transition-all duration-700 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <span className="inline-block px-4 py-1.5 bg-amber-500/20 text-amber-300 text-sm font-medium rounded-full mb-6 border border-amber-500/30">
-              Opening August 2027 · Stockbridge, Henry County, GA
+              Opening August 2027 · Stockbridge, South Fulton, Henry County, GA
             </span>
             <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white leading-tight mb-6">
               Built to Belong.<br />Built to Become.
             </h1>
             <p className="text-white/80 text-lg sm:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
-              Carmel Academy is a new K–3 school in the Stockbridge area for families who know their child is capable of more. We see their potential, close their gaps, build their confidence, and prepare them for a successful future.
+              Carmel Academy is a new K–3 school in the Stockbridge and South Fulton area for families who know their child is capable of more. We see their potential, close their gaps, build their confidence, and prepare them for a successful future.
             </p>
             <p className="text-amber-300 text-sm mb-10">
-              Founded by Monique Bridges — two schools, two states, 100+ students each in year one.
+              Founded by educator Monique Bridges — with one belief at the heart of it all: every child deserves someone who believes in them first.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button

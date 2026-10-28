@@ -292,7 +292,7 @@ export default function GetInvolved({ onNavigate }: Props) {
                 {[
                   { icon: Mail, label: 'Email', value: 'info@carmelacademy.school', type: 'email' },
                   { icon: Phone, label: 'Phone', value: 'Coming soon', type: 'text' },
-                  { icon: MapPin, label: 'Location', value: 'Stockbridge area, Henry County, Georgia', type: 'text' },
+                  { icon: MapPin, label: 'Location', value: 'Stockbridge and South Fulton, Henry County, Georgia', type: 'text' },
                 ].map((item) => {
                   const Icon = item.icon;
                   return (

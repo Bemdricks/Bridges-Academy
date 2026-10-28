@@ -35,6 +35,7 @@ const workshops = [
 
 const locations = [
   { name: 'Stockbridge', type: 'Primary area', color: 'bg-brand-600' },
+  { name: 'South Fulton', type: 'Primary area', color: 'bg-amber-400' },
   { name: 'McDonough', type: 'Nearby', color: 'bg-amber-500' },
   { name: 'Locust Grove', type: 'Nearby', color: 'bg-brand-800' },
   { name: 'Henry County', type: 'Surrounding area', color: 'bg-neutral-500' },
@@ -129,10 +130,10 @@ export default function Beyond({ onNavigate }: Props) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-amber-400 font-semibold text-sm uppercase tracking-widest">Our community</span>
-            <h2 className="font-display font-bold text-4xl text-white mt-3">Serving Henry County.</h2>
-            <p className="text-brand-300 mt-4 max-w-lg mx-auto">Carmel Academy serves families across Stockbridge, McDonough, Locust Grove, and the wider Henry County area.</p>
+            <h2 className="font-display font-bold text-4xl text-white mt-3">Serving Henry County and South Fulton.</h2>
+            <p className="text-brand-300 mt-4 max-w-lg mx-auto">Carmel Academy serves families across Stockbridge, South Fulton, McDonough, Locust Grove, and the wider Henry County area.</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {locations.map((loc) => (
               <div key={loc.name} className="bg-brand-800 rounded-2xl p-5 border border-brand-700 text-center hover:bg-brand-700/70 transition-colors">
                 <div className={`w-3 h-3 rounded-full ${loc.color} mx-auto mb-3`} />
@@ -216,7 +217,7 @@ export default function Beyond({ onNavigate }: Props) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Users className="w-10 h-10 text-brand-300 mx-auto mb-4" />
           <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">Are you a business, tradesperson, or mentor?</h2>
-          <p className="text-brand-200 mb-8 max-w-xl mx-auto">Partner with Carmel Academy to give students real-world experiences they'll never forget — and be part of building Henry County's next generation.</p>
+          <p className="text-brand-200 mb-8 max-w-xl mx-auto">Partner with Carmel Academy to give students real-world experiences they'll never forget — and be part of building the next generation in Henry County and South Fulton.</p>
           <button onClick={() => nav('involved')} className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-brand-900 font-semibold rounded-full transition-colors inline-flex items-center gap-2">
             Partner With Us <ArrowRight className="w-4 h-4" />
           </button>

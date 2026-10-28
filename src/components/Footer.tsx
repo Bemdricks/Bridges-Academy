@@ -41,12 +41,12 @@ export default function Footer({ onNavigate }: FooterProps) {
               </span>
             </div>
             <p className="text-brand-400 text-sm leading-relaxed max-w-sm">
-              A new K–3 school in the Stockbridge area of Henry County, Georgia. Opening August 2027.
+              A new K–3 school in the Stockbridge and South Fulton area of Henry County, Georgia. Opening August 2027.
             </p>
             <div className="mt-6 space-y-2">
               <div className="flex items-center gap-2 text-brand-400 text-sm">
                 <MapPin className="w-4 h-4 text-brand-300 flex-shrink-0" />
-                <span>Stockbridge area, Henry County, Georgia</span>
+                <span>Stockbridge and South Fulton, Henry County, Georgia</span>
               </div>
               <div className="flex items-center gap-2 text-brand-400 text-sm">
                 <Mail className="w-4 h-4 text-brand-300 flex-shrink-0" />
@@ -118,7 +118,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="flex items-center gap-4">
             <a href="/admin" className="text-brand-500 hover:text-white text-xs transition-colors">Staff</a>
             <p className="text-brand-400 text-xs">
-              Stockbridge &bull; McDonough &bull; Locust Grove &bull; Henry County, GA
+              Stockbridge &bull; South Fulton &bull; McDonough &bull; Locust Grove &bull; Henry County, GA
             </p>
           </div>
         </div>
