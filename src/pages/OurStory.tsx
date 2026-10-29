@@ -1,6 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 import { ArrowRight, Quote } from 'lucide-react';
 import Testimonials from '@/components/Testimonials';
+import moniquePhoto from '@/images/Monique.jpeg';
+import derrickPhoto from '@/images/Derrick.jpeg';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 interface Props { onNavigate: (page: Page) => void; }
@@ -28,6 +30,7 @@ const values = [
 export default function OurStory({ onNavigate }: Props) {
   const nav = (page: Page) => { onNavigate(page); window.scrollTo({ top: 0, behavior: 'instant' }); };
   const storyRef = useInView();
+  const derrickRef = useInView();
   const valuesRef = useInView();
   const teamRef = useInView();
 
@@ -55,9 +58,9 @@ export default function OurStory({ onNavigate }: Props) {
             <div>
               <div className="relative">
                 <img
-                  src="https://images.pexels.com/photos/18870246/pexels-photo-18870246.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                  alt="A dedicated educator working with a student"
-                  className="rounded-2xl w-full h-80 object-cover shadow-xl"
+                  src={moniquePhoto}
+                  alt="Monique Bridges, Founder of Carmel Academy"
+                  className="rounded-2xl w-full max-w-md object-cover object-center aspect-[3/4] shadow-xl"
                 />
                 <div className="absolute -bottom-6 -right-6 bg-brand-700 text-white rounded-2xl p-5 shadow-lg hidden md:block">
                   <p className="font-display font-bold text-3xl">2</p>
@@ -69,10 +72,14 @@ export default function OurStory({ onNavigate }: Props) {
             </div>
             <div>
               <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">Meet Monique</span>
-              <h2 className="font-display font-bold text-3xl md:text-4xl text-neutral-900 mt-3 mb-6">Monique Bridges, Founder</h2>
+              <h2 className="font-display font-bold text-3xl md:text-4xl text-neutral-900 mt-3">Monique Bridges</h2>
+              <p className="text-brand-600 font-semibold mt-2 mb-6">Founder, Carmel Academy</p>
               <div className="space-y-5 text-neutral-600 leading-relaxed">
                 <p>
-                Monique Bridges has spent more than a decade in education, opening schools in two states and growing each to more than 100 students in its first year. Born in Atlanta and raised on the city’s eastside, she understands the importance of creating opportunities that help children see beyond their current circumstances.
+                Monique Bridges is an educator and school founder with more than a decade of experience building schools and creating opportunities for students to thrive. Having opened schools in two states, she has seen firsthand what becomes possible when children are challenged, supported, and given meaningful opportunities to discover their potential. She founded Carmel Academy on the belief that education should prepare students not just for the next grade, but for life. Through academic excellence, hands-on learning, life skills, and real-world experiences, her vision is to develop confident, capable individuals prepared to navigate the world, pursue meaningful careers, and shape their own futures.
+                </p>
+                <p>
+                Born in Atlanta and raised on the city’s eastside, she understands the importance of creating opportunities that help children see beyond their current circumstances. Each school she opened grew to more than 100 students in its first year.
                 </p>
                 <p>
                 As an educator, she taught several students who began the year grade levels behind and watched them rise above grade level as they gained exposure to skilled trades, career connections, bank accounts, and experiences beyond their city. She saw what became possible when students connected learning to the real world and began to envision futures they had never considered.
@@ -93,6 +100,37 @@ export default function OurStory({ onNavigate }: Props) {
                 </p>
                 <cite className="block mt-3 text-sm font-semibold text-neutral-700 not-italic">— Monique Bridges, Founder</cite>
               </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Derrick's story */}
+      <section className="py-20 md:py-28 bg-neutral-50">
+        <div ref={derrickRef.ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`grid lg:grid-cols-2 gap-14 items-start transition-all duration-700 ${derrickRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="order-2 lg:order-1">
+              <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">Meet Derrick</span>
+              <h2 className="font-display font-bold text-3xl md:text-4xl text-neutral-900 mt-3">Derrick Connell Robinson</h2>
+              <p className="text-brand-600 font-semibold mt-2 mb-6">Founding Operations Leader</p>
+              <div className="space-y-5 text-neutral-600 leading-relaxed">
+                <p>
+                  Derrick Robinson is an experienced operations leader with a strong background in school operations, budgeting, and performance management. With experience as a Senior Director and Regional Senior Manager of School Operations, he has led critical school functions, strengthened organizational systems, and used data to improve efficiency and outcomes across multiple schools.
+                </p>
+                <p>
+                  He holds a bachelor's degree in Sociology with a minor in Psychology from Paine College and a master's degree in Public Administration and Public Policy. Beyond education, Derrick is the founder of HE IS, Inc., a 501(c)(3) nonprofit dedicated to youth development, mentorship, and community service.
+                </p>
+                <p>
+                  At Carmel Academy, Derrick leads the operational work that helps bring the school's vision to life. His focus on effective systems, responsible resource management, and organizational excellence helps create an environment where educators can focus on preparing students for success in the classroom and beyond. A devoted father of two, he is passionate about developing people and creating opportunities for the next generation.
+                </p>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2 lg:flex lg:justify-end">
+              <img
+                src={derrickPhoto}
+                alt="Derrick Connell Robinson, Founding Operations Leader"
+                className="rounded-2xl w-full max-w-md object-cover object-center aspect-square shadow-xl"
+              />
             </div>
           </div>
         </div>
@@ -147,14 +185,18 @@ export default function OurStory({ onNavigate }: Props) {
             </div>
             <div className="grid sm:grid-cols-3 gap-8">
               {[
-                { name: 'Monique Bridges', role: 'Founder & Director', bio: 'Two schools. Two states. 100+ students in year one each time. Monique has dedicated her career to building schools where every child is seen and challenged to their fullest potential.', initial: 'M' },
-                { name: 'Derrick Robinson', role: 'Team Member', bio: 'Derrick brings deep experience and a genuine commitment to the Carmel Academy mission. Full bio coming soon as the team prepares for the August 2027 opening.', initial: 'D' },
-                { name: 'Nutan Dossa', role: 'Team Member', bio: 'Nutan is dedicated to creating learning environments where all students thrive. Full bio coming soon as the team prepares for the August 2027 opening.', initial: 'N' },
+                { name: 'Monique Bridges', role: 'Founder, Carmel Academy', bio: 'An educator and school founder with more than a decade of experience building schools and creating opportunities for students to thrive.', initial: 'M', photo: moniquePhoto },
+                { name: 'Derrick Connell Robinson', role: 'Founding Operations Leader', bio: 'An operations leader with a background in school operations, budgeting, and performance management. He builds the systems that help Carmel’s vision come to life.', initial: 'D', photo: derrickPhoto },
+                { name: 'Nutan Dossa', role: 'Team Member', bio: 'Nutan is dedicated to creating learning environments where all students thrive. Full bio coming soon as the team prepares for the August 2027 opening.', initial: 'N', photo: undefined },
               ].map((person) => (
                 <div key={person.name} className="bg-neutral-50 rounded-2xl p-8 border border-neutral-100 hover:shadow-md transition-shadow text-center">
-                  <div className="w-20 h-20 rounded-full bg-brand-600 flex items-center justify-center mx-auto mb-5 text-white font-display font-bold text-3xl">
-                    {person.initial}
-                  </div>
+                  {person.photo ? (
+                    <img src={person.photo} alt="" className="w-20 h-20 rounded-full object-cover object-center mx-auto mb-5" />
+                  ) : (
+                    <div className="w-20 h-20 rounded-full bg-brand-600 flex items-center justify-center mx-auto mb-5 text-white font-display font-bold text-3xl">
+                      {person.initial}
+                    </div>
+                  )}
                   <h3 className="font-display font-bold text-xl text-neutral-900">{person.name}</h3>
                   <p className="text-brand-600 text-sm font-medium mt-1 mb-4">{person.role}</p>
                   <p className="text-neutral-600 text-sm leading-relaxed">{person.bio}</p>

@@ -4,6 +4,8 @@ import Testimonials from '@/components/Testimonials';
 import applyClassroom from '@/images/apply-classroom.jpg';
 import handsOnProject from '@/images/CA-kid03.jpeg';
 import differentClassroom from '@/images/CA-kid02.jpeg';
+import moniquePhoto from '@/images/Monique.jpeg';
+import derrickPhoto from '@/images/Derrick.jpeg';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 
@@ -327,14 +329,18 @@ export default function Home({ onNavigate }: HomeProps) {
             </div>
             <div className="grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
               {[
-                { name: 'Monique Bridges', role: 'Founder & Director', bio: 'Two schools. Two states. 100+ students in year one each time. Monique has dedicated her career to building schools where every child is seen and challenged.' },
-                { name: 'Derrick Robinson', role: 'Team Member', bio: 'Bio coming soon. Derrick brings expertise and dedication to the Carmel Academy mission.' },
-                { name: 'Nutan Dossa', role: 'Team Member', bio: 'Bio coming soon. Nutan is committed to creating an environment where all learners thrive.' },
+                { name: 'Monique Bridges', role: 'Founder, Carmel Academy', bio: 'An educator and school founder with more than a decade of experience building schools and creating opportunities for students to thrive.', photo: moniquePhoto },
+                { name: 'Derrick Connell Robinson', role: 'Founding Operations Leader', bio: 'An operations leader with a background in school operations, budgeting, and performance management across multiple schools.', photo: derrickPhoto },
+                { name: 'Nutan Dossa', role: 'Team Member', bio: 'Bio coming soon. Nutan is committed to creating an environment where all learners thrive.', photo: undefined },
               ].map((person) => (
                 <div key={person.name} className="bg-white rounded-2xl p-7 border border-neutral-100 hover:shadow-md transition-shadow text-center">
-                  <div className="w-16 h-16 rounded-full bg-brand-100 flex items-center justify-center mx-auto mb-4 text-brand-700 font-display font-bold text-2xl">
-                    {person.name.charAt(0)}
-                  </div>
+                  {person.photo ? (
+                    <img src={person.photo} alt="" className="w-16 h-16 rounded-full object-cover object-center mx-auto mb-4" />
+                  ) : (
+                    <div className="w-16 h-16 rounded-full bg-brand-100 flex items-center justify-center mx-auto mb-4 text-brand-700 font-display font-bold text-2xl">
+                      {person.name.charAt(0)}
+                    </div>
+                  )}
                   <h3 className="font-semibold text-neutral-900 text-base">{person.name}</h3>
                   <p className="text-brand-600 text-sm mb-3">{person.role}</p>
                   <p className="text-neutral-500 text-sm leading-relaxed">{person.bio}</p>
