@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, BookOpen, Wrench, Globe, Star, Heart, ChevronDown } from 'lucide-react';
 import Testimonials from '@/components/Testimonials';
 import applyClassroom from '@/images/apply-classroom.jpg';
+import handsOnProject from '@/images/CA-kid03.jpeg';
+import differentClassroom from '@/images/CA-kid02.jpeg';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 
@@ -159,8 +161,8 @@ export default function Home({ onNavigate }: HomeProps) {
             </div>
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/6437479/pexels-photo-6437479.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                alt="Children working together in a supportive classroom environment"
+                src={differentClassroom}
+                alt="Carmel Academy students working together at a classroom table"
                 className="rounded-2xl object-cover w-full h-80 md:h-96 shadow-xl"
               />
               <div className="absolute -bottom-6 -left-6 bg-amber-500 text-brand-900 rounded-2xl p-5 shadow-lg hidden md:block">
@@ -294,7 +296,7 @@ export default function Home({ onNavigate }: HomeProps) {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
                 { img: 'https://images.pexels.com/photos/1128318/pexels-photo-1128318.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Real-world explorations' },
-                { img: 'https://images.pexels.com/photos/4260325/pexels-photo-4260325.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Hands-on projects' },
+                { img: handsOnProject, label: 'Hands-on projects' },
                 { img: 'https://images.pexels.com/photos/5905621/pexels-photo-5905621.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Community learning' },
               ].map((item) => (
                 <div key={item.label} className="relative rounded-2xl overflow-hidden h-56 group">
