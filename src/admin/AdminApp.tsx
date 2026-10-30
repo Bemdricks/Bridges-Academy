@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import type { Session } from '@supabase/supabase-js';
-import { supabase } from '@/lib/supabase';
+import { AUTH_ERROR_KEY, SET_PASSWORD_KEY, supabase } from '@/lib/supabase';
 import { checkStaff, type StaffAccess } from '@/admin/api';
 import LoginScreen from '@/admin/LoginScreen';
+import SetPasswordScreen from '@/admin/SetPasswordScreen';
 import Dashboard from '@/admin/Dashboard';
 
 const SITE_TITLE = 'Carmel Academy – Built to Belong. Built to Become.';
@@ -12,6 +13,8 @@ export default function AdminApp() {
   const [ready, setReady] = useState(false);
   const [access, setAccess] = useState<StaffAccess | 'unknown'>('unknown');
   const [accessMessage, setAccessMessage] = useState('');
+  const [choosePassword, setChoosePassword] = useState(() => sessionStorage.getItem(SET_PASSWORD_KEY) === '1');
+  const [linkNotice, setLinkNotice] = useState('');
 
   useEffect(() => {
     document.title = 'Staff · Carmel Academy';
@@ -29,8 +32,12 @@ export default function AdminApp() {
       setSession(data.session);
       setReady(true);
     });
-    const { data } = supabase.auth.onAuthStateChange((_event, next) => {
+    const { data } = supabase.auth.onAuthStateChange((event, next) => {
       setSession(next);
+      if (event === 'PASSWORD_RECOVERY') {
+        sessionStorage.setItem(SET_PASSWORD_KEY, '1');
+        setChoosePassword(true);
+      }
     });
     return () => data.subscription.unsubscribe();
   }, []);
@@ -51,11 +58,35 @@ export default function AdminApp() {
     };
   }, [session]);
 
+  useEffect(() => {
+    if (!ready || !window.location.hash) return;
+    const hash = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+    if (hash.has('access_token') || hash.has('error_description') || hash.get('type')) {
+      window.history.replaceState(null, '', '/admin');
+    }
+  }, [ready]);
+
+  useEffect(() => {
+    if (!ready || session || !choosePassword) return;
+    sessionStorage.removeItem(SET_PASSWORD_KEY);
+    const expired = 'That link has expired or was already used. Ask for a new invite, or sign in if you already set a password.';
+    sessionStorage.setItem(AUTH_ERROR_KEY, expired);
+    setChoosePassword(false);
+    setLinkNotice(expired);
+  }, [ready, session, choosePassword]);
+
   const signOut = async () => {
+    sessionStorage.removeItem(SET_PASSWORD_KEY);
+    setChoosePassword(false);
     await supabase?.auth.signOut();
   };
 
-  if (!ready || (session && access === 'unknown')) {
+  const finishPasswordSetup = () => {
+    sessionStorage.removeItem(SET_PASSWORD_KEY);
+    setChoosePassword(false);
+  };
+
+  if (!ready || (session && access === 'unknown' && !choosePassword)) {
     return (
       <div className="min-h-screen bg-neutral-50 flex items-center justify-center text-sm text-neutral-500">
         Loading staff tools…
@@ -63,7 +94,17 @@ export default function AdminApp() {
     );
   }
 
-  if (!session) return <LoginScreen />;
+  if (choosePassword && session) {
+    return (
+      <SetPasswordScreen
+        email={session.user.email ?? ''}
+        onDone={finishPasswordSetup}
+        onSignOut={signOut}
+      />
+    );
+  }
+
+  if (!session) return <LoginScreen notice={linkNotice} />;
 
   if (access !== 'ok') {
     return (

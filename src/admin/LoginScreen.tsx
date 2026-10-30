@@ -1,12 +1,22 @@
 import { FormEvent, useState } from 'react';
-import { supabase } from '@/lib/supabase';
+import { AUTH_ERROR_KEY, supabase } from '@/lib/supabase';
 import logo from '@/images/logo.png';
 
-export default function LoginScreen() {
+interface LoginScreenProps {
+  notice?: string;
+}
+
+export default function LoginScreen({ notice = '' }: LoginScreenProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState(() => {
+    const stored = sessionStorage.getItem(AUTH_ERROR_KEY) ?? '';
+    if (stored) sessionStorage.removeItem(AUTH_ERROR_KEY);
+    return stored;
+  });
+  const [message, setMessage] = useState(notice);
   const [submitting, setSubmitting] = useState(false);
+  const [sendingLink, setSendingLink] = useState(false);
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
@@ -22,6 +32,29 @@ export default function LoginScreen() {
     });
     setSubmitting(false);
     if (signInError) setError(signInError.message);
+  };
+
+  const sendReset = async () => {
+    setError('');
+    setMessage('');
+    if (!email.trim()) {
+      setError('Enter your email first, then request the link.');
+      return;
+    }
+    if (!supabase) {
+      setError('The site is not connected to its database yet.');
+      return;
+    }
+    setSendingLink(true);
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: `${window.location.origin}/admin`,
+    });
+    setSendingLink(false);
+    if (resetError) {
+      setError(resetError.message);
+      return;
+    }
+    setMessage('Check your email for a link to choose a password.');
   };
 
   return (
@@ -69,12 +102,25 @@ export default function LoginScreen() {
                 {error}
               </p>
             )}
+            {(message || notice) && !error && (
+              <p className="text-sm text-brand-800 bg-brand-50 border border-brand-100 rounded-xl px-4 py-3">
+                {message || notice}
+              </p>
+            )}
             <button
               type="submit"
               disabled={submitting}
               className="w-full py-3.5 bg-brand-800 hover:bg-brand-900 disabled:bg-brand-400 text-white font-semibold rounded-full transition-colors text-sm"
             >
               {submitting ? 'Signing in…' : 'Sign in'}
+            </button>
+            <button
+              type="button"
+              onClick={sendReset}
+              disabled={sendingLink}
+              className="w-full text-sm text-brand-700 hover:underline disabled:text-neutral-400"
+            >
+              {sendingLink ? 'Sending…' : 'Email me a link to set my password'}
             </button>
           </form>
         </div>
