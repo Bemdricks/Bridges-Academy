@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { ArrowRight, Quote } from 'lucide-react';
+import { openInvolvedTab } from '@/lib/involvedTab';
 import Testimonials from '@/components/Testimonials';
 import moniquePhoto from '@/images/Monique.jpeg';
 import derrickPhoto from '@/images/Derrick.jpeg';
@@ -112,7 +113,7 @@ export default function OurStory({ onNavigate }: Props) {
             <div className="order-2 lg:order-1">
               <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">Meet Derrick</span>
               <h2 className="font-display font-bold text-3xl md:text-4xl text-neutral-900 mt-3">Derrick Connell Robinson</h2>
-              <p className="text-brand-600 font-semibold mt-2 mb-6">Founding Operations Leader</p>
+              <p className="text-brand-600 font-semibold mt-2 mb-6">Operations Leader</p>
               <div className="space-y-5 text-neutral-600 leading-relaxed">
                 <p>
                   Derrick Robinson is an experienced operations leader with a strong background in school operations, budgeting, and performance management. With experience as a Senior Director and Regional Senior Manager of School Operations, he has led critical school functions, strengthened organizational systems, and used data to improve efficiency and outcomes across multiple schools.
@@ -205,8 +206,8 @@ export default function OurStory({ onNavigate }: Props) {
             </div>
             <div className="mt-10 text-center">
               <p className="text-neutral-500 text-sm mb-4">Interested in joining our team?</p>
-              <button onClick={() => nav('involved')} className="inline-flex items-center gap-2 px-6 py-3 bg-brand-700 hover:bg-brand-800 text-white font-semibold rounded-full transition-colors text-sm">
-                See Teaching Opportunities <ArrowRight className="w-4 h-4" />
+              <button onClick={() => { openInvolvedTab('team'); nav('involved'); }} className="inline-flex items-center gap-2 px-6 py-3 bg-brand-700 hover:bg-brand-800 text-white font-semibold rounded-full transition-colors text-sm">
+                See open roles <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>

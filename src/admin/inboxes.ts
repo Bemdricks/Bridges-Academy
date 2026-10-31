@@ -78,13 +78,14 @@ export const inboxes: Inbox[] = [
     id: 'team',
     table: 'team_interest_submissions',
     label: 'Team interest',
-    description: 'People who want to join the staff',
+    description: 'Applications for open roles',
     nameKey: 'name',
     fields: [
       { key: 'name', label: 'Name' },
       { key: 'email', label: 'Email' },
       { key: 'role_interest', label: 'Role' },
       { key: 'message', label: 'Message', long: true },
+      { key: 'resume_path', label: 'Resume' },
     ],
   },
 ];
@@ -109,6 +110,7 @@ export interface Submission {
   role_type?: string | null;
   role_interest?: string | null;
   message?: string | null;
+  resume_path?: string | null;
 }
 
 export const statuses: { id: SubmissionStatus; label: string }[] = [

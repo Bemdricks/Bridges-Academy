@@ -1,5 +1,6 @@
 import { MapPin, Mail } from 'lucide-react';
 import logo from '../images/logo-white.png';
+import { openInvolvedTab } from '@/lib/involvedTab';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 
@@ -103,7 +104,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('involved')} className="text-brand-400 hover:text-white text-sm transition-colors">
+                <button onClick={() => { openInvolvedTab('team'); handleNav('involved'); }} className="text-brand-400 hover:text-white text-sm transition-colors">
                   Join Our Team
                 </button>
               </li>

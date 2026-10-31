@@ -42,7 +42,7 @@ const bridgeStops = [
 ];
 
 const journeySteps = [
-  { step: 'Know', tagline: 'Learn it.', desc: 'Children learn each skill at their own level and pace, with a teacher who knows exactly where they are.', example: 'A second grader reads at their own level in a small group of three.', color: 'bg-brand-700 text-white', img: 'https://images.pexels.com/photos/5905861/pexels-photo-5905861.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { step: 'Know', tagline: 'Learn it.', desc: 'Children learn each skill at their own level and pace, with a teacher who knows exactly where they are.', example: 'A second grader reads at their own level in a small group.', color: 'bg-brand-700 text-white', img: 'https://images.pexels.com/photos/5905861/pexels-photo-5905861.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
   { step: 'Apply', tagline: 'Use it.', desc: 'Skills go straight into real projects, roles, and problems — not worksheets that get filed away.', example: 'Third graders run a classroom store and practice making change.', color: 'bg-amber-500 text-brand-900', img: applyClassroom, position: 'center 22%' },
   { step: 'Explore', tagline: 'Go see it.', desc: 'Children take their learning into the wider world and meet the people who actually do the work.', example: 'A local builder visits and students plan a budget for a birdhouse.', color: 'bg-brand-800 text-white', img: 'https://images.pexels.com/photos/5240515/pexels-photo-5240515.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
 ];
@@ -330,8 +330,8 @@ export default function Home({ onNavigate }: HomeProps) {
             <div className="grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
               {[
                 { name: 'Monique Bridges', role: 'Founder, Carmel Academy', bio: 'An educator and school founder with more than a decade of experience building schools and creating opportunities for students to thrive.', photo: moniquePhoto },
-                { name: 'Derrick Connell Robinson', role: 'Founding Operations Leader', bio: 'An operations leader with a background in school operations, budgeting, and performance management across multiple schools.', photo: derrickPhoto },
-                { name: 'Nutan Dossa', role: 'Team Member', bio: 'Bio coming soon. Nutan is committed to creating an environment where all learners thrive.', photo: undefined },
+                { name: 'Derrick Connell Robinson', role: 'Operations Leader', bio: 'An operations leader with a background in school operations, budgeting, and performance management across multiple schools.', photo: derrickPhoto },
+                { name: 'Nutan Sewdath Dossa, Esq', role: 'Pathways to Possibilities', bio: 'Bio coming soon. Nutan is committed to creating an environment where all learners thrive.', photo: undefined },
               ].map((person) => (
                 <div key={person.name} className="bg-white rounded-2xl p-7 border border-neutral-100 hover:shadow-md transition-shadow text-center">
                   {person.photo ? (

@@ -13,6 +13,7 @@ import {
   X,
 } from 'lucide-react';
 import logo from '@/images/logo-white.png';
+import { supabase } from '@/lib/supabase';
 import { loadInboxes, updateSubmission } from '@/admin/api';
 import TestimonialsManager from '@/admin/TestimonialsManager';
 import {
@@ -478,9 +479,10 @@ function DetailPanel({
                 <div key={field.key}>
                   <dt className="text-xs uppercase tracking-wide text-neutral-400">{field.label}</dt>
                   <dd className={`mt-1 text-sm text-neutral-800 ${field.long ? 'whitespace-pre-wrap leading-relaxed' : ''}`}>
+                    {field.key === 'resume_path' ? (value ? <ResumeLink path={value} /> : '—') : null}
                     {field.key === 'email' && value ? <a className="text-brand-700 hover:underline" href={`mailto:${value}`}>{value}</a> : null}
                     {field.key === 'phone' && value ? <a className="text-brand-700 hover:underline" href={`tel:${value}`}>{value}</a> : null}
-                    {field.key !== 'email' && field.key !== 'phone' ? (value || '—') : null}
+                    {field.key !== 'email' && field.key !== 'phone' && field.key !== 'resume_path' ? (value || '—') : null}
                     {(field.key === 'email' || field.key === 'phone') && !value ? '—' : null}
                   </dd>
                 </div>
@@ -513,6 +515,33 @@ function DetailPanel({
   );
 }
 
+function ResumeLink({ path }: { path: string }) {
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+
+  const open = async () => {
+    if (!supabase) return;
+    setBusy(true);
+    setError('');
+    const { data, error: linkError } = await supabase.storage.from('resumes').createSignedUrl(path, 60 * 10);
+    setBusy(false);
+    if (linkError || !data?.signedUrl) {
+      setError('Could not open this resume.');
+      return;
+    }
+    window.open(data.signedUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  return (
+    <span>
+      <button type="button" onClick={open} disabled={busy} className="text-brand-700 hover:underline disabled:text-neutral-400">
+        {busy ? 'Opening…' : 'View resume'}
+      </button>
+      {error && <span className="block text-error-700 mt-1">{error}</span>}
+    </span>
+  );
+}
+
 function StatusPill({ status }: { status: SubmissionStatus }) {
   const styles = {
     new: 'bg-amber-100 text-amber-800',
@@ -538,7 +567,7 @@ function FilterChip({ active, onClick, label }: { active: boolean; onClick: () =
 }
 
 function previewDetail(inbox: Inbox, row: Submission) {
-  const preferred = inbox.fields.find((field) => !['parent_name', 'name', 'email', 'phone'].includes(field.key) && !field.long);
+  const preferred = inbox.fields.find((field) => !['parent_name', 'name', 'email', 'phone', 'resume_path'].includes(field.key) && !field.long);
   if (!preferred) return '—';
   return fieldValue(row, preferred.key) || '—';
 }

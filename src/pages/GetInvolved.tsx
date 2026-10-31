@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CheckCircle, AlertCircle, Calendar, Users, Briefcase, Mail, Phone, MapPin } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import OpenRoles from '@/components/OpenRoles';
+import { openRoles } from '@/data/openRoles';
+import { consumeInvolvedTab, onInvolvedTab } from '@/lib/involvedTab';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 interface Props { onNavigate: (page: Page) => void; }
@@ -12,11 +15,16 @@ interface PartnerForm { name: string; email: string; organization: string; role_
 interface TeamForm { name: string; email: string; role_interest: string; message: string; }
 
 const roleTypes = ['Business / Employer', 'Tradesperson', 'Mentor / Coach', 'Community Organization', 'Other'];
-const teachRoles = ['Lead Teacher', 'Assistant Teacher', 'Administrator', 'Counselor / Support', 'Other'];
+const teachRoles = openRoles.map((role) => role.title);
+const resumeTypes: Record<string, string> = {
+  pdf: 'application/pdf',
+  doc: 'application/msword',
+  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+};
 
 export default function GetInvolved({ onNavigate }: Props) {
   const nav = (page: Page) => { onNavigate(page); window.scrollTo({ top: 0, behavior: 'instant' }); };
-  const [activeTab, setActiveTab] = useState<TabId>('rsvp');
+  const [activeTab, setActiveTab] = useState<TabId>(() => consumeInvolvedTab() ?? 'rsvp');
 
   const [rsvp, setRsvp] = useState<RsvpForm>({ name: '', email: '', phone: '', guests_count: 1 });
   const [rsvpSubmitting, setRsvpSubmitting] = useState(false);
@@ -29,9 +37,16 @@ export default function GetInvolved({ onNavigate }: Props) {
   const [partnerError, setPartnerError] = useState('');
 
   const [team, setTeam] = useState<TeamForm>({ name: '', email: '', role_interest: '', message: '' });
+  const [resume, setResume] = useState<File | null>(null);
+  const [resumeKey, setResumeKey] = useState(0);
   const [teamSubmitting, setTeamSubmitting] = useState(false);
   const [teamDone, setTeamDone] = useState(false);
   const [teamError, setTeamError] = useState('');
+
+  useEffect(() => onInvolvedTab(() => {
+    const tab = consumeInvolvedTab();
+    if (tab) setActiveTab(tab);
+  }), []);
 
   const submitRsvp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,18 +78,57 @@ export default function GetInvolved({ onNavigate }: Props) {
     setPartnerDone(true);
   };
 
+  const applyForRole = (title: string) => {
+    setTeam((current) => ({ ...current, role_interest: title }));
+    setTeamDone(false);
+    document.getElementById('team-application')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const submitTeam = async (e: React.FormEvent) => {
     e.preventDefault();
-    setTeamSubmitting(true);
     setTeamError('');
-    if (!supabase) { setTeamSubmitting(false); setTeamError('Something went wrong. Please try again.'); return; }
+    if (!team.role_interest) {
+      setTeamError('Choose the role you are applying for.');
+      return;
+    }
+    if (!resume) {
+      setTeamError('Add your resume as a PDF or Word file.');
+      return;
+    }
+    const extension = resume.name.split('.').pop()?.toLowerCase() ?? '';
+    const contentType = resumeTypes[extension];
+    if (!contentType || resume.size > 5 * 1024 * 1024) {
+      setTeamError('Use a PDF or Word file that is 5 MB or smaller.');
+      return;
+    }
+    if (!supabase) { setTeamError('Something went wrong. Please try again.'); return; }
+
+    setTeamSubmitting(true);
+    const path = `applications/${crypto.randomUUID()}.${extension}`;
+    const { error: uploadError } = await supabase.storage.from('resumes').upload(path, resume, {
+      contentType,
+      upsert: false,
+    });
+    if (uploadError) {
+      setTeamSubmitting(false);
+      setTeamError('We could not upload your resume. Please try again.');
+      return;
+    }
+
     const { error } = await supabase.from('team_interest_submissions').insert({
       name: team.name, email: team.email,
-      role_interest: team.role_interest || null,
+      role_interest: team.role_interest,
       message: team.message || null,
+      resume_path: path,
     });
     setTeamSubmitting(false);
-    if (error) { setTeamError('Something went wrong. Please try again.'); return; }
+    if (error) {
+      setTeamError('Something went wrong. Please try again.');
+      return;
+    }
+    setTeam({ name: '', email: '', role_interest: '', message: '' });
+    setResume(null);
+    setResumeKey((key) => key + 1);
     setTeamDone(true);
   };
 
@@ -246,40 +300,55 @@ export default function GetInvolved({ onNavigate }: Props) {
           {/* Team */}
           {activeTab === 'team' && (
             <div className="bg-white rounded-2xl p-8 border border-neutral-100 shadow-sm">
-              <h2 className="font-display font-bold text-2xl text-neutral-900 mb-2">Join Our Team</h2>
-              <p className="text-neutral-500 text-sm mb-7">Carmel Academy is looking for educators who believe every child can thrive. Tell us about yourself — we'll be in touch as hiring begins.</p>
-              {teamDone ? (
-                <SuccessCard headline="We'd love to connect!" sub="Thank you for your interest in joining the Carmel Academy team. We'll be in touch as our hiring process begins ahead of the August 2027 opening." onReset={() => setTeamDone(false)} />
-              ) : (
-                <form onSubmit={submitTeam} className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className={labelClass}>Your Name <span className="text-error-500">*</span></label>
-                      <input type="text" required className={inputClass} placeholder="Your full name" value={team.name} onChange={e => setTeam(s => ({ ...s, name: e.target.value }))} />
+              <OpenRoles onApply={applyForRole} />
+              <div id="team-application" className="scroll-mt-32 border-t border-neutral-100 pt-8">
+                <h2 className="font-display font-bold text-2xl text-neutral-900 mb-2">Apply</h2>
+                <p className="text-neutral-500 text-sm mb-7">Tell us which role you want and attach your resume. We will be in touch as hiring continues ahead of the August 2027 opening.</p>
+                {teamDone ? (
+                  <SuccessCard headline="Application received." sub="Thank you for applying to Carmel Academy. We have your resume and will be in touch." onReset={() => setTeamDone(false)} />
+                ) : (
+                  <form onSubmit={submitTeam} className="space-y-5">
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      <div>
+                        <label className={labelClass}>Your Name <span className="text-error-500">*</span></label>
+                        <input type="text" required className={inputClass} placeholder="Your full name" value={team.name} onChange={e => setTeam(s => ({ ...s, name: e.target.value }))} />
+                      </div>
+                      <div>
+                        <label className={labelClass}>Email <span className="text-error-500">*</span></label>
+                        <input type="email" required className={inputClass} placeholder="you@example.com" value={team.email} onChange={e => setTeam(s => ({ ...s, email: e.target.value }))} />
+                      </div>
                     </div>
                     <div>
-                      <label className={labelClass}>Email <span className="text-error-500">*</span></label>
-                      <input type="email" required className={inputClass} placeholder="you@example.com" value={team.email} onChange={e => setTeam(s => ({ ...s, email: e.target.value }))} />
+                      <label className={labelClass}>Role <span className="text-error-500">*</span></label>
+                      <select required className={`${inputClass} bg-white`} value={team.role_interest} onChange={e => setTeam(s => ({ ...s, role_interest: e.target.value }))}>
+                        <option value="">Select a role</option>
+                        {teachRoles.map(r => <option key={r} value={r}>{r}</option>)}
+                      </select>
                     </div>
-                  </div>
-                  <div>
-                    <label className={labelClass}>Role you're interested in</label>
-                    <select className={`${inputClass} bg-white`} value={team.role_interest} onChange={e => setTeam(s => ({ ...s, role_interest: e.target.value }))}>
-                      <option value="">Select a role</option>
-                      {teachRoles.map(r => <option key={r} value={r}>{r}</option>)}
-                    </select>
-                  </div>
-                  <div>
-                    <label className={labelClass}>Tell us about yourself (optional)</label>
-                    <textarea rows={4} className={`${inputClass} resize-none`} placeholder="Your background, what draws you to Carmel Academy, what you'd bring to the team…" value={team.message} onChange={e => setTeam(s => ({ ...s, message: e.target.value }))} />
-                  </div>
-                  {teamError && <ErrorMsg msg={teamError} />}
-                  <button type="submit" disabled={teamSubmitting} className="w-full py-4 bg-brand-700 hover:bg-brand-800 disabled:bg-brand-400 text-white font-semibold rounded-xl transition-colors text-sm">
-                    {teamSubmitting ? 'Sending…' : 'Express My Interest'}
-                  </button>
-                  <p className="text-xs text-neutral-400 text-center">Hiring begins ahead of the August 2027 opening.</p>
-                </form>
-              )}
+                    <div>
+                      <label className={labelClass} htmlFor="resume">Resume <span className="text-error-500">*</span></label>
+                      <input
+                        id="resume"
+                        key={resumeKey}
+                        type="file"
+                        required
+                        accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                        className={`${inputClass} file:mr-4 file:rounded-full file:border-0 file:bg-brand-50 file:px-4 file:py-1.5 file:text-sm file:font-semibold file:text-brand-700`}
+                        onChange={e => setResume(e.target.files?.[0] ?? null)}
+                      />
+                      <p className="text-xs text-neutral-400 mt-1.5">PDF or Word, up to 5 MB.</p>
+                    </div>
+                    <div>
+                      <label className={labelClass}>Tell us about yourself (optional)</label>
+                      <textarea rows={4} className={`${inputClass} resize-none`} placeholder="Your background, what draws you to Carmel Academy, what you'd bring to the team…" value={team.message} onChange={e => setTeam(s => ({ ...s, message: e.target.value }))} />
+                    </div>
+                    {teamError && <ErrorMsg msg={teamError} />}
+                    <button type="submit" disabled={teamSubmitting} className="w-full py-4 bg-brand-700 hover:bg-brand-800 disabled:bg-brand-400 text-white font-semibold rounded-xl transition-colors text-sm">
+                      {teamSubmitting ? 'Sending…' : 'Submit application'}
+                    </button>
+                  </form>
+                )}
+              </div>
             </div>
           )}
 
