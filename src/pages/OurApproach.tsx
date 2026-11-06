@@ -199,7 +199,7 @@ export default function OurApproach({ onNavigate }: Props) {
                 <Users className="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-brand-900 text-sm mb-1">Plus, twice a month</p>
-                  <p className="text-brand-700 text-sm leading-relaxed">Once a month, students take part in a real-world experience beyond the classroom. Families are invited to workshops so learning continues at home.</p>
+                  <p className="text-brand-700 text-sm leading-relaxed">Twice a month, students take part in a real-world experience beyond the classroom. Families are invited to workshops so learning continues at home.</p>
                 </div>
               </div>
             </div>

@@ -50,12 +50,11 @@ export default function Beyond({ onNavigate }: Props) {
   return (
     <div className="pt-44 sm:pt-48 md:pt-52 lg:pt-56">
       {/* Hero */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/9290014/pexels-photo-9290014.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)' }}
-        />
-        <div className="absolute inset-0 bg-brand-900/80" />
+      <section className="relative py-20 md:py-28 bg-brand-900 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full border-4 border-white" />
+          <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full border-2 border-white" />
+        </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block px-4 py-1.5 bg-amber-500/20 text-amber-300 text-sm font-medium rounded-full mb-6 border border-amber-500/30">
             Beyond the Classroom
@@ -76,31 +75,15 @@ export default function Beyond({ onNavigate }: Props) {
       {/* The idea */}
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">The Explore step</span>
-              <h2 className="font-display font-bold text-4xl text-neutral-900 mt-3 mb-6">The world is the classroom.</h2>
-              <p className="text-neutral-600 leading-relaxed mb-5">
-                At Carmel, learning doesn't stop at the school door. Once a month, students step out into Henry County and beyond — visiting real workplaces, meeting people who do real work, and seeing themselves in futures they may not have imagined.
-              </p>
-              <p className="text-neutral-600 leading-relaxed">
-                This is the Explore step — the third and outermost ring of the Carmel model. Students take what they Know and have Applied, and they test it in the real world.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { img: 'https://images.pexels.com/photos/12887137/pexels-photo-12887137.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Field explorations' },
-                { img: 'https://images.pexels.com/photos/4544774/pexels-photo-4544774.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Hands-on projects' },
-                { img: 'https://images.pexels.com/photos/12887055/pexels-photo-12887055.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Community visits' },
-                { img: 'https://images.pexels.com/photos/5905479/pexels-photo-5905479.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Real-world discovery' },
-              ].map((item) => (
-                <div key={item.label} className="relative rounded-xl overflow-hidden h-36">
-                  <img src={item.img} alt={item.label} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/50 to-transparent" />
-                  <span className="absolute bottom-2 left-2 text-white text-xs font-medium">{item.label}</span>
-                </div>
-              ))}
-            </div>
+          <div className="max-w-3xl">
+            <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">The Explore step</span>
+            <h2 className="font-display font-bold text-4xl text-neutral-900 mt-3 mb-6">The world is the classroom.</h2>
+            <p className="text-neutral-600 leading-relaxed mb-5">
+              At Carmel, learning doesn't stop at the school door. Once a month, students step out into Henry County and beyond — visiting real workplaces, meeting people who do real work, and seeing themselves in futures they may not have imagined.
+            </p>
+            <p className="text-neutral-600 leading-relaxed">
+              This is the Explore step — the third and outermost ring of the Carmel model. Students take what they Know and have Applied, and they test it in the real world.
+            </p>
           </div>
         </div>
       </section>

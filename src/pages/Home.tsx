@@ -4,9 +4,10 @@ import Testimonials from '@/components/Testimonials';
 import { openInvolvedTab } from '@/lib/involvedTab';
 import heroClassroom from '@/images/hero-classroom.jpg';
 import knowMuseum from '@/images/CA-kid04.jpg';
-import applySolar from '@/images/CA-kid09.jpg';
-import exploreGarden from '@/images/CA-explore.jpg';
-import handsOnProject from '@/images/CA-kid03.jpeg';
+import applyStore from '@/images/CA-kid10.jpeg';
+import exploreBirdhouse from '@/images/CA-kid11.jpeg';
+import handsOnProject from '@/images/CA-kid09.jpg';
+import communityLearning from '@/images/CA-kid03.jpeg';
 import realWorldBarbering from '@/images/CA-kid07.jpg';
 import differentClassroom from '@/images/CA-kid02.jpeg';
 import moniquePhoto from '@/images/Monique.jpeg';
@@ -49,8 +50,8 @@ const bridgeStops = [
 
 const journeySteps = [
   { step: 'Know', tagline: 'Learn it.', desc: 'Children learn each skill at their own level and pace, with a teacher who knows exactly where they are.', example: 'A second grader reads at their own level in a small group.', color: 'bg-brand-700 text-white', img: knowMuseum, alt: 'Carmel Academy students looking up at a dinosaur skeleton', position: 'center 32%' },
-  { step: 'Apply', tagline: 'Use it.', desc: 'Skills go straight into real projects, roles, and problems — not worksheets that get filed away.', example: 'Third graders run a classroom store and practice making change.', color: 'bg-amber-500 text-brand-900', img: applySolar, alt: 'A Carmel Academy student building a solar community project', position: 'center 40%' },
-  { step: 'Explore', tagline: 'Go see it.', desc: 'Children take their learning into the wider world and meet the people who actually do the work.', example: 'A local builder visits and students plan a budget for a birdhouse.', color: 'bg-brand-800 text-white', img: exploreGarden, alt: 'Carmel Academy students exploring plants with magnifying glasses', position: 'center 22%' },
+  { step: 'Apply', tagline: 'Use it.', desc: 'Skills go straight into real projects, roles, and problems — not worksheets that get filed away.', example: 'Third graders run a classroom store and practice making change.', color: 'bg-amber-500 text-brand-900', img: applyStore, alt: 'Carmel Academy students making change at the classroom store', position: 'center 38%' },
+  { step: 'Explore', tagline: 'Go see it.', desc: 'Children take their learning into the wider world and meet the people who actually do the work.', example: 'A local builder visits and students plan a budget for a birdhouse.', color: 'bg-brand-800 text-white', img: exploreBirdhouse, alt: 'A builder teaching Carmel Academy students how to design a birdhouse', position: 'center 35%' },
 ];
 
 export default function Home({ onNavigate }: HomeProps) {
@@ -304,8 +305,8 @@ export default function Home({ onNavigate }: HomeProps) {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
                 { img: realWorldBarbering, label: 'Real-world explorations', position: 'center top' },
-                { img: handsOnProject, label: 'Hands-on projects' },
-                { img: 'https://images.pexels.com/photos/5905621/pexels-photo-5905621.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Community learning' },
+                { img: handsOnProject, label: 'Hands-on projects', position: 'center 40%' },
+                { img: communityLearning, label: 'Community learning', position: 'center 40%' },
               ].map((item) => (
                 <div key={item.label} className="relative rounded-2xl overflow-hidden h-56 group">
                   <img src={item.img} alt={item.label} style={{ objectPosition: 'position' in item ? item.position : 'center' }} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />

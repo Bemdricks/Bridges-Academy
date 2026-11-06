@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { fallbackTestimonials, fetchTestimonials, type Testimonial } from '@/lib/testimonials';
 
@@ -10,6 +10,8 @@ export default function Testimonials({ tone = 'white' }: TestimonialsProps) {
   const [testimonials, setTestimonials] = useState<Testimonial[]>(fallbackTestimonials);
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [height, setHeight] = useState<number>();
+  const trackRef = useRef<HTMLDivElement>(null);
   const count = testimonials.length;
   const bg = tone === 'stone' ? 'bg-neutral-50' : 'bg-white';
   const card = tone === 'stone' ? 'bg-white' : 'bg-neutral-50';
@@ -29,6 +31,18 @@ export default function Testimonials({ tone = 'white' }: TestimonialsProps) {
       cancelled = true;
     };
   }, []);
+
+  useLayoutEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const measure = () => {
+      const slide = track.children[index] as HTMLElement | undefined;
+      if (slide) setHeight(slide.offsetHeight);
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [index, testimonials]);
 
   useEffect(() => {
     if (paused || count < 2) return;
@@ -57,19 +71,20 @@ export default function Testimonials({ tone = 'white' }: TestimonialsProps) {
           </p>
         </div>
 
-        <div className="overflow-hidden">
+        <div className="overflow-hidden transition-[height] duration-500 ease-out" style={{ height }}>
           <div
-            className="flex items-stretch transition-transform duration-500 ease-out"
+            ref={trackRef}
+            className="flex items-start transition-transform duration-500 ease-out"
             style={{ transform: `translateX(-${index * 100}%)` }}
           >
             {testimonials.map((item, i) => (
               <figure
                 key={item.id ?? item.name}
-                className={`${card} w-full shrink-0 rounded-3xl border border-neutral-100 shadow-sm p-8 md:p-12 flex flex-col`}
+                className={`${card} w-full shrink-0 rounded-3xl border border-neutral-100 shadow-sm p-8 md:p-12`}
                 aria-hidden={i !== index}
               >
                 <Quote className="w-8 h-8 text-amber-500 mb-6" aria-hidden="true" />
-                <blockquote className="flex-1">
+                <blockquote>
                   <p className="text-neutral-800 text-sm md:text-base italic leading-relaxed">{item.quote}</p>
                 </blockquote>
                 <figcaption className="mt-8 flex items-center gap-4">
