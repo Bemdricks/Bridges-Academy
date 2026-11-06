@@ -4,6 +4,7 @@ import { openInvolvedTab } from '@/lib/involvedTab';
 import Testimonials from '@/components/Testimonials';
 import moniquePhoto from '@/images/Monique.jpeg';
 import derrickPhoto from '@/images/Derrick.jpeg';
+import nutanPhoto from '@/images/Nutan.jpeg';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 interface Props { onNavigate: (page: Page) => void; }
@@ -32,11 +33,12 @@ export default function OurStory({ onNavigate }: Props) {
   const nav = (page: Page) => { onNavigate(page); window.scrollTo({ top: 0, behavior: 'instant' }); };
   const storyRef = useInView();
   const derrickRef = useInView();
+  const nutanRef = useInView();
   const valuesRef = useInView();
   const teamRef = useInView();
 
   return (
-    <div className="pt-32 sm:pt-36 md:pt-40 lg:pt-44">
+    <div className="pt-44 sm:pt-48 md:pt-52 lg:pt-56">
       {/* Hero */}
       <section className="relative py-20 md:py-28 bg-neutral-50 overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-60" />
@@ -137,6 +139,34 @@ export default function OurStory({ onNavigate }: Props) {
         </div>
       </section>
 
+      {/* Nutan's story */}
+      <section className="py-20 md:py-28 bg-white">
+        <div ref={nutanRef.ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`grid lg:grid-cols-2 gap-14 items-start transition-all duration-700 ${nutanRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div>
+              <img
+                src={nutanPhoto}
+                alt="Nutan Vani Sewdath Dossa, Pathways to Possibility"
+                className="rounded-2xl w-full max-w-md object-cover object-center aspect-[3/4] shadow-xl"
+              />
+            </div>
+            <div>
+              <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">Meet Nutan</span>
+              <h2 className="font-display font-bold text-3xl md:text-4xl text-neutral-900 mt-3">Nutan Vani Sewdath Dossa</h2>
+              <p className="text-brand-600 font-semibold mt-2 mb-6">Pathways to Possibility Lead</p>
+              <div className="space-y-5 text-neutral-600 leading-relaxed">
+                <p>
+                  Nutan Vani Sewdath Dossa is an attorney and Adjunct Professor at the University of Miami School of Law and a graduate of Brooklyn Law School. Her legal career includes experience in white-collar defense, real estate, and private equity at firms including Goodwin Procter LLP. She also built a firm’s SEC compliance program from the ground up, bringing a strong foundation in leadership, integrity, and organizational excellence.
+                </p>
+                <p>
+                  In 2023, she co-founded The Dossa Foundation, which provides mentorship, career exposure, and leadership development to students in under-resourced communities. At Carmel Academy, Nutan leads Pathways to Possibility, connecting students with mentors, professional experiences, and career opportunities that broaden their understanding of what is possible. She supports Carmel Academy’s team both on site and remotely from Miami.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Carmel exists */}
       <section className="py-20 md:py-28 bg-brand-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -187,8 +217,8 @@ export default function OurStory({ onNavigate }: Props) {
             <div className="grid sm:grid-cols-3 gap-8">
               {[
                 { name: 'Monique Bridges', role: 'Founder, Carmel Academy', bio: 'An educator and school founder with more than a decade of experience building schools and creating opportunities for students to thrive.', initial: 'M', photo: moniquePhoto },
-                { name: 'Derrick Connell Robinson', role: 'Founding Operations Leader', bio: 'An operations leader with a background in school operations, budgeting, and performance management. He builds the systems that help Carmel’s vision come to life.', initial: 'D', photo: derrickPhoto },
-                { name: 'Nutan Dossa', role: 'Team Member', bio: 'Nutan is dedicated to creating learning environments where all students thrive. Full bio coming soon as the team prepares for the August 2027 opening.', initial: 'N', photo: undefined },
+                { name: 'Derrick Connell Robinson', role: 'Operations Leader', bio: 'An operations leader with a background in school operations, budgeting, and performance management. He builds the systems that help Carmel’s vision come to life.', initial: 'D', photo: derrickPhoto },
+                { name: 'Nutan Vani Sewdath Dossa', role: 'Pathways to Possibility Lead', bio: 'An attorney who connects students with mentors, professional experiences, and career opportunities that broaden what they believe is possible.', initial: 'N', photo: nutanPhoto },
               ].map((person) => (
                 <div key={person.name} className="bg-neutral-50 rounded-2xl p-8 border border-neutral-100 hover:shadow-md transition-shadow text-center">
                   {person.photo ? (

@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CheckCircle, AlertCircle, Calendar, Users, Briefcase, Mail, Phone, MapPin } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import OpenRoles from '@/components/OpenRoles';
 import { openRoles } from '@/data/openRoles';
-import { consumeInvolvedTab, onInvolvedTab } from '@/lib/involvedTab';
+import { consumeInvolvedScroll, consumeInvolvedTab, onInvolvedTab } from '@/lib/involvedTab';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 interface Props { onNavigate: (page: Page) => void; }
@@ -25,6 +25,7 @@ const resumeTypes: Record<string, string> = {
 export default function GetInvolved({ onNavigate }: Props) {
   const nav = (page: Page) => { onNavigate(page); window.scrollTo({ top: 0, behavior: 'instant' }); };
   const [activeTab, setActiveTab] = useState<TabId>(() => consumeInvolvedTab() ?? 'rsvp');
+  const pendingScroll = useRef<string | null>(null);
 
   const [rsvp, setRsvp] = useState<RsvpForm>({ name: '', email: '', phone: '', guests_count: 1 });
   const [rsvpSubmitting, setRsvpSubmitting] = useState(false);
@@ -43,10 +44,36 @@ export default function GetInvolved({ onNavigate }: Props) {
   const [teamDone, setTeamDone] = useState(false);
   const [teamError, setTeamError] = useState('');
 
-  useEffect(() => onInvolvedTab(() => {
-    const tab = consumeInvolvedTab();
-    if (tab) setActiveTab(tab);
-  }), []);
+  useEffect(() => {
+    const scrollToPending = () => {
+      const id = pendingScroll.current;
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      pendingScroll.current = null;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    pendingScroll.current = consumeInvolvedScroll();
+    scrollToPending();
+
+    return onInvolvedTab(() => {
+      const tab = consumeInvolvedTab();
+      if (tab) setActiveTab(tab);
+      const scrollTo = consumeInvolvedScroll();
+      if (scrollTo) pendingScroll.current = scrollTo;
+      window.setTimeout(scrollToPending, 60);
+    });
+  }, []);
+
+  useEffect(() => {
+    const id = pendingScroll.current;
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (!el) return;
+    pendingScroll.current = null;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [activeTab]);
 
   const submitRsvp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -158,7 +185,7 @@ export default function GetInvolved({ onNavigate }: Props) {
   );
 
   return (
-    <div className="pt-32 sm:pt-36 md:pt-40 lg:pt-44">
+    <div className="pt-44 sm:pt-48 md:pt-52 lg:pt-56">
       {/* Hero */}
       <section className="py-20 md:py-28 bg-brand-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -189,7 +216,10 @@ export default function GetInvolved({ onNavigate }: Props) {
               </p>
             </div>
             <button
-              onClick={() => setActiveTab('rsvp')}
+              onClick={() => {
+                setActiveTab('rsvp');
+                window.setTimeout(() => document.getElementById('rsvp-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+              }}
               className="flex-shrink-0 mt-5 md:mt-0 px-7 py-3.5 bg-brand-700 hover:bg-brand-800 text-white font-semibold rounded-full transition-colors text-sm inline-flex items-center gap-2 mx-auto md:mx-0"
             >
               Reserve Your Spot
@@ -199,7 +229,7 @@ export default function GetInvolved({ onNavigate }: Props) {
       </section>
 
       {/* Forms */}
-      <section className="py-20 bg-neutral-50">
+      <section id="rsvp-form" className="scroll-mt-52 py-20 bg-neutral-50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Tab bar */}
           <div className="flex gap-2 mb-10 bg-white rounded-2xl p-2 border border-neutral-100 shadow-sm overflow-x-auto">
@@ -301,7 +331,7 @@ export default function GetInvolved({ onNavigate }: Props) {
           {activeTab === 'team' && (
             <div className="bg-white rounded-2xl p-8 border border-neutral-100 shadow-sm">
               <OpenRoles onApply={applyForRole} />
-              <div id="team-application" className="scroll-mt-32 border-t border-neutral-100 pt-8">
+              <div id="team-application" className="scroll-mt-64 border-t border-neutral-100 pt-8">
                 <h2 className="font-display font-bold text-2xl text-neutral-900 mb-2">Apply</h2>
                 <p className="text-neutral-500 text-sm mb-7">Tell us which role you want and attach your resume. We will be in touch as hiring continues ahead of the August 2027 opening.</p>
                 {teamDone ? (

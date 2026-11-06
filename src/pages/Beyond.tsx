@@ -48,7 +48,7 @@ export default function Beyond({ onNavigate }: Props) {
   const workshopsRef = useInView();
 
   return (
-    <div className="pt-32 sm:pt-36 md:pt-40 lg:pt-44">
+    <div className="pt-44 sm:pt-48 md:pt-52 lg:pt-56">
       {/* Hero */}
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div

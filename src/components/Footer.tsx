@@ -94,7 +94,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('involved')} className="text-brand-400 hover:text-white text-sm transition-colors">
+                <button onClick={() => { openInvolvedTab('rsvp', { scrollTo: 'rsvp-form' }); onNavigate('involved'); }} className="text-brand-400 hover:text-white text-sm transition-colors">
                   RSVP – Interest Meeting
                 </button>
               </li>

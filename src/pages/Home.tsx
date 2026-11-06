@@ -1,11 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, BookOpen, Wrench, Globe, Star, Heart, ChevronDown } from 'lucide-react';
 import Testimonials from '@/components/Testimonials';
-import applyClassroom from '@/images/apply-classroom.jpg';
+import { openInvolvedTab } from '@/lib/involvedTab';
+import heroClassroom from '@/images/hero-classroom.jpg';
+import knowMuseum from '@/images/CA-kid04.jpg';
+import applySolar from '@/images/CA-kid09.jpg';
+import exploreGarden from '@/images/CA-explore.jpg';
 import handsOnProject from '@/images/CA-kid03.jpeg';
+import realWorldBarbering from '@/images/CA-kid07.jpg';
 import differentClassroom from '@/images/CA-kid02.jpeg';
 import moniquePhoto from '@/images/Monique.jpeg';
 import derrickPhoto from '@/images/Derrick.jpeg';
+import nutanPhoto from '@/images/Nutan.jpeg';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 
@@ -42,9 +48,9 @@ const bridgeStops = [
 ];
 
 const journeySteps = [
-  { step: 'Know', tagline: 'Learn it.', desc: 'Children learn each skill at their own level and pace, with a teacher who knows exactly where they are.', example: 'A second grader reads at their own level in a small group.', color: 'bg-brand-700 text-white', img: 'https://images.pexels.com/photos/5905861/pexels-photo-5905861.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
-  { step: 'Apply', tagline: 'Use it.', desc: 'Skills go straight into real projects, roles, and problems — not worksheets that get filed away.', example: 'Third graders run a classroom store and practice making change.', color: 'bg-amber-500 text-brand-900', img: applyClassroom, position: 'center 22%' },
-  { step: 'Explore', tagline: 'Go see it.', desc: 'Children take their learning into the wider world and meet the people who actually do the work.', example: 'A local builder visits and students plan a budget for a birdhouse.', color: 'bg-brand-800 text-white', img: 'https://images.pexels.com/photos/5240515/pexels-photo-5240515.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { step: 'Know', tagline: 'Learn it.', desc: 'Children learn each skill at their own level and pace, with a teacher who knows exactly where they are.', example: 'A second grader reads at their own level in a small group.', color: 'bg-brand-700 text-white', img: knowMuseum, alt: 'Carmel Academy students looking up at a dinosaur skeleton', position: 'center 32%' },
+  { step: 'Apply', tagline: 'Use it.', desc: 'Skills go straight into real projects, roles, and problems — not worksheets that get filed away.', example: 'Third graders run a classroom store and practice making change.', color: 'bg-amber-500 text-brand-900', img: applySolar, alt: 'A Carmel Academy student building a solar community project', position: 'center 40%' },
+  { step: 'Explore', tagline: 'Go see it.', desc: 'Children take their learning into the wider world and meet the people who actually do the work.', example: 'A local builder visits and students plan a budget for a birdhouse.', color: 'bg-brand-800 text-white', img: exploreGarden, alt: 'Carmel Academy students exploring plants with magnifying glasses', position: 'center 22%' },
 ];
 
 export default function Home({ onNavigate }: HomeProps) {
@@ -72,8 +78,8 @@ export default function Home({ onNavigate }: HomeProps) {
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-brand-900">
         {/* Background image overlay */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/5905450/pexels-photo-5905450.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)' }}
+          className="absolute inset-0 bg-cover bg-[center_22%]"
+          style={{ backgroundImage: `url(${heroClassroom})` }}
         />
         <div className="absolute inset-0 bg-brand-900/80" />
         {/* Decorative arc */}
@@ -83,7 +89,7 @@ export default function Home({ onNavigate }: HomeProps) {
           </svg>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-32 text-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-48 sm:pt-52 md:pt-56 lg:pt-60 pb-32 text-center">
           <div className={`transition-all duration-700 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <span className="inline-block px-4 py-1.5 bg-amber-500/20 text-amber-300 text-sm font-medium rounded-full mb-6 border border-amber-500/30">
               Opening August 2027 · Stockbridge, South Fulton, Henry County, GA
@@ -189,7 +195,7 @@ export default function Home({ onNavigate }: HomeProps) {
             {journeySteps.map((s, i) => (
               <div key={s.step} className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <div className="relative h-52 overflow-hidden">
-                  <img src={s.img} alt={s.step === 'Apply' ? 'Carmel Academy student working at her desk' : s.step} style={{ objectPosition: 'position' in s ? s.position : 'center' }} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img src={s.img} alt={s.alt} style={{ objectPosition: s.position }} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent" />
                   <div className={`absolute top-4 left-4 ${s.color} text-xs font-bold px-3 py-1 rounded-full`}>
                     Step {i + 1}
@@ -297,12 +303,12 @@ export default function Home({ onNavigate }: HomeProps) {
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                { img: 'https://images.pexels.com/photos/1128318/pexels-photo-1128318.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Real-world explorations' },
+                { img: realWorldBarbering, label: 'Real-world explorations', position: 'center top' },
                 { img: handsOnProject, label: 'Hands-on projects' },
                 { img: 'https://images.pexels.com/photos/5905621/pexels-photo-5905621.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', label: 'Community learning' },
               ].map((item) => (
                 <div key={item.label} className="relative rounded-2xl overflow-hidden h-56 group">
-                  <img src={item.img} alt={item.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img src={item.img} alt={item.label} style={{ objectPosition: 'position' in item ? item.position : 'center' }} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent" />
                   <span className="absolute bottom-4 left-4 text-white font-semibold text-sm">{item.label}</span>
                 </div>
@@ -331,7 +337,7 @@ export default function Home({ onNavigate }: HomeProps) {
               {[
                 { name: 'Monique Bridges', role: 'Founder, Carmel Academy', bio: 'An educator and school founder with more than a decade of experience building schools and creating opportunities for students to thrive.', photo: moniquePhoto },
                 { name: 'Derrick Connell Robinson', role: 'Operations Leader', bio: 'An operations leader with a background in school operations, budgeting, and performance management across multiple schools.', photo: derrickPhoto },
-                { name: 'Nutan Sewdath Dossa, Esq', role: 'Pathways to Possibilities', bio: 'Bio coming soon. Nutan is committed to creating an environment where all learners thrive.', photo: undefined },
+                { name: 'Nutan Vani Sewdath Dossa', role: 'Pathways to Possibility Lead', bio: 'An attorney who leads Pathways to Possibility, connecting students with mentors and career experiences.', photo: nutanPhoto },
               ].map((person) => (
                 <div key={person.name} className="bg-white rounded-2xl p-7 border border-neutral-100 hover:shadow-md transition-shadow text-center">
                   {person.photo ? (
@@ -372,7 +378,7 @@ export default function Home({ onNavigate }: HomeProps) {
               Free interest meeting in December 2026 at 6 p.m. — date and location to be announced. Come meet the team and ask every question on your mind.
             </p>
             <button
-              onClick={() => nav('involved')}
+              onClick={() => { openInvolvedTab('rsvp', { scrollTo: 'rsvp-form' }); nav('involved'); }}
               className="px-8 py-4 bg-amber-500 text-brand-900 font-semibold rounded-full hover:bg-amber-400 transition-colors text-base inline-flex items-center gap-2"
             >
               Reserve Your Spot <ArrowRight className="w-4 h-4" />

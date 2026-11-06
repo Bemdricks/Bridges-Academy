@@ -100,7 +100,7 @@ export default function Families({ onNavigate }: Props) {
   };
 
   return (
-    <div className="pt-32 sm:pt-36 md:pt-40 lg:pt-44">
+    <div className="pt-44 sm:pt-48 md:pt-52 lg:pt-56">
       {/* Hero */}
       <section className="py-20 md:py-28 bg-amber-500 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
