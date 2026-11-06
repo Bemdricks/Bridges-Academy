@@ -1,5 +1,10 @@
 import { useRef, useEffect, useState } from 'react';
 import { ArrowRight, MapPin, Users, Lightbulb, Calendar } from 'lucide-react';
+import beyondHero from '@/images/CA-kid08.jpeg';
+import exploreMuseum from '@/images/CA-kid04.jpeg';
+import exploreClassroom from '@/images/CA-kid06.jpeg';
+import exploreBarbering from '@/images/CA-kid07.jpeg';
+import exploreDesk from '@/images/apply-classroom.jpg';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 interface Props { onNavigate: (page: Page) => void; }
@@ -51,6 +56,11 @@ export default function Beyond({ onNavigate }: Props) {
     <div className="pt-44 sm:pt-48 md:pt-52 lg:pt-56">
       {/* Hero */}
       <section className="relative py-20 md:py-28 bg-brand-900 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-[center_22%]"
+          style={{ backgroundImage: `url(${beyondHero})` }}
+        />
+        <div className="absolute inset-0 bg-brand-900/75" />
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full border-4 border-white" />
           <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full border-2 border-white" />
@@ -61,7 +71,7 @@ export default function Beyond({ onNavigate }: Props) {
           </span>
           <h1 className="font-display font-bold text-5xl md:text-6xl text-white mb-5">Beyond.</h1>
           <p className="text-white/80 text-xl max-w-2xl mx-auto leading-relaxed">
-            Once a month, learning leaves the classroom. Students step into the real world — and bring it back with them.
+            Twice a month, learning leaves the classroom. Students step into the real world — and bring it back with them.
           </p>
           <button
             onClick={() => nav('families')}
@@ -75,15 +85,33 @@ export default function Beyond({ onNavigate }: Props) {
       {/* The idea */}
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">The Explore step</span>
-            <h2 className="font-display font-bold text-4xl text-neutral-900 mt-3 mb-6">The world is the classroom.</h2>
-            <p className="text-neutral-600 leading-relaxed mb-5">
-              At Carmel, learning doesn't stop at the school door. Once a month, students step out into Henry County and beyond — visiting real workplaces, meeting people who do real work, and seeing themselves in futures they may not have imagined.
-            </p>
-            <p className="text-neutral-600 leading-relaxed">
-              This is the Explore step — the third and outermost ring of the Carmel model. Students take what they Know and have Applied, and they test it in the real world.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">The Explore step</span>
+              <h2 className="font-display font-bold text-4xl text-neutral-900 mt-3 mb-6">The world is the classroom.</h2>
+              <p className="text-neutral-600 leading-relaxed mb-5">
+                At Carmel, learning doesn't stop at the school door. Once a month, students step out into Henry County and beyond — visiting real workplaces, meeting people who do real work, and seeing themselves in futures they may not have imagined.
+              </p>
+              <p className="text-neutral-600 leading-relaxed">
+                This is the Explore step — the third and outermost ring of the Carmel model. Students take what they Know and have Applied, and they test it in the real world.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { src: exploreMuseum, alt: 'Carmel Academy students looking at a dinosaur skeleton', position: 'center' },
+                { src: exploreClassroom, alt: 'Carmel Academy students working together at a classroom table', position: 'center' },
+                { src: exploreBarbering, alt: 'A barber teaching Carmel Academy students', position: 'center top' },
+                { src: exploreDesk, alt: 'A Carmel Academy student working at her desk', position: 'center 28%' },
+              ].map((photo) => (
+                <img
+                  key={photo.src}
+                  src={photo.src}
+                  alt={photo.alt}
+                  style={{ objectPosition: photo.position }}
+                  className="w-full aspect-[3/4] object-cover rounded-xl"
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

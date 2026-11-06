@@ -3,7 +3,7 @@ import { ArrowRight, BookOpen, Wrench, Globe, Star, Heart, ChevronDown } from 'l
 import Testimonials from '@/components/Testimonials';
 import { openInvolvedTab } from '@/lib/involvedTab';
 import heroClassroom from '@/images/hero-classroom.jpg';
-import knowMuseum from '@/images/CA-kid04.jpg';
+import knowReading from '@/images/CA-kid05.jpeg';
 import applyStore from '@/images/CA-kid10.jpeg';
 import exploreBirdhouse from '@/images/CA-kid11.jpeg';
 import handsOnProject from '@/images/CA-kid09.jpg';
@@ -49,7 +49,7 @@ const bridgeStops = [
 ];
 
 const journeySteps = [
-  { step: 'Know', tagline: 'Learn it.', desc: 'Children learn each skill at their own level and pace, with a teacher who knows exactly where they are.', example: 'A second grader reads at their own level in a small group.', color: 'bg-brand-700 text-white', img: knowMuseum, alt: 'Carmel Academy students looking up at a dinosaur skeleton', position: 'center 32%' },
+  { step: 'Know', tagline: 'Learn it.', desc: 'Children learn each skill at their own level and pace, with a teacher who knows exactly where they are.', example: 'A second grader reads at their own level in a small group.', color: 'bg-brand-700 text-white', img: knowReading, alt: 'Carmel Academy students reading together', position: 'center 42%' },
   { step: 'Apply', tagline: 'Use it.', desc: 'Skills go straight into real projects, roles, and problems — not worksheets that get filed away.', example: 'Third graders run a classroom store and practice making change.', color: 'bg-amber-500 text-brand-900', img: applyStore, alt: 'Carmel Academy students making change at the classroom store', position: 'center 38%' },
   { step: 'Explore', tagline: 'Go see it.', desc: 'Children take their learning into the wider world and meet the people who actually do the work.', example: 'A local builder visits and students plan a budget for a birdhouse.', color: 'bg-brand-800 text-white', img: exploreBirdhouse, alt: 'A builder teaching Carmel Academy students how to design a birdhouse', position: 'center 35%' },
 ];
