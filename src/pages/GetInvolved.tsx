@@ -10,11 +10,12 @@ interface Props { onNavigate: (page: Page) => void; }
 
 type TabId = 'rsvp' | 'partner' | 'team' | 'contact';
 
-interface RsvpForm { name: string; email: string; phone: string; guests_count: number; }
+interface RsvpForm { name: string; email: string; phone: string; guests_count: number; heard_about: string; heard_about_other: string; }
 interface PartnerForm { name: string; email: string; organization: string; role_type: string; message: string; }
 interface TeamForm { name: string; email: string; role_interest: string; message: string; }
 
 const roleTypes = ['Business / Employer', 'Tradesperson', 'Mentor / Coach', 'Community Organization', 'Other'];
+const heardAboutOptions = ['Google Search', 'Social Media', 'Other'];
 const teachRoles = openRoles.map((role) => role.title);
 const resumeTypes: Record<string, string> = {
   pdf: 'application/pdf',
@@ -27,7 +28,7 @@ export default function GetInvolved({ onNavigate }: Props) {
   const [activeTab, setActiveTab] = useState<TabId>(() => consumeInvolvedTab() ?? 'rsvp');
   const pendingScroll = useRef<string | null>(null);
 
-  const [rsvp, setRsvp] = useState<RsvpForm>({ name: '', email: '', phone: '', guests_count: 1 });
+  const [rsvp, setRsvp] = useState<RsvpForm>({ name: '', email: '', phone: '', guests_count: 1, heard_about: '', heard_about_other: '' });
   const [rsvpSubmitting, setRsvpSubmitting] = useState(false);
   const [rsvpDone, setRsvpDone] = useState(false);
   const [rsvpError, setRsvpError] = useState('');
@@ -80,9 +81,16 @@ export default function GetInvolved({ onNavigate }: Props) {
     setRsvpSubmitting(true);
     setRsvpError('');
     if (!supabase) { setRsvpSubmitting(false); setRsvpError('Something went wrong. Please try again.'); return; }
+    const heardAbout = rsvp.heard_about === 'Other' ? rsvp.heard_about_other.trim() : rsvp.heard_about;
+    if (rsvp.heard_about === 'Other' && !heardAbout) {
+      setRsvpSubmitting(false);
+      setRsvpError('Tell us how you heard about us.');
+      return;
+    }
     const { error } = await supabase.from('rsvp_submissions').insert({
       name: rsvp.name, email: rsvp.email,
       phone: rsvp.phone || null, guests_count: rsvp.guests_count,
+      heard_about: heardAbout || null,
     });
     setRsvpSubmitting(false);
     if (error) { setRsvpError('Something went wrong. Please try again.'); return; }
@@ -275,6 +283,31 @@ export default function GetInvolved({ onNavigate }: Props) {
                       <input type="number" min={1} max={20} className={inputClass} value={rsvp.guests_count} onChange={e => setRsvp(s => ({ ...s, guests_count: parseInt(e.target.value) || 1 }))} />
                     </div>
                   </div>
+                  <div>
+                    <label className={labelClass}>How did you hear about us? <span className="text-error-500">*</span></label>
+                    <select
+                      required
+                      className={`${inputClass} bg-white`}
+                      value={rsvp.heard_about}
+                      onChange={e => setRsvp(s => ({ ...s, heard_about: e.target.value, heard_about_other: e.target.value === 'Other' ? s.heard_about_other : '' }))}
+                    >
+                      <option value="">Select one</option>
+                      {heardAboutOptions.map(option => <option key={option} value={option}>{option}</option>)}
+                    </select>
+                  </div>
+                  {rsvp.heard_about === 'Other' && (
+                    <div>
+                      <label className={labelClass}>Please specify <span className="text-error-500">*</span></label>
+                      <input
+                        type="text"
+                        required
+                        className={inputClass}
+                        placeholder="How did you hear about us?"
+                        value={rsvp.heard_about_other}
+                        onChange={e => setRsvp(s => ({ ...s, heard_about_other: e.target.value }))}
+                      />
+                    </div>
+                  )}
                   {rsvpError && <ErrorMsg msg={rsvpError} />}
                   <button type="submit" disabled={rsvpSubmitting} className="w-full py-4 bg-brand-700 hover:bg-brand-800 disabled:bg-brand-400 text-white font-semibold rounded-xl transition-colors text-sm">
                     {rsvpSubmitting ? 'Sending…' : 'Reserve My Spot'}

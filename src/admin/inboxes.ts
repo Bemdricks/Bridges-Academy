@@ -58,6 +58,7 @@ export const inboxes: Inbox[] = [
       { key: 'email', label: 'Email' },
       { key: 'phone', label: 'Phone' },
       { key: 'guests_count', label: 'Guests' },
+      { key: 'heard_about', label: 'How they heard' },
     ],
   },
   {
@@ -106,6 +107,7 @@ export interface Submission {
   preferred_time?: string | null;
   children_count?: number | null;
   guests_count?: number | null;
+  heard_about?: string | null;
   organization?: string | null;
   role_type?: string | null;
   role_interest?: string | null;

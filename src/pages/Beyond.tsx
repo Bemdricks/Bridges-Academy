@@ -90,10 +90,10 @@ export default function Beyond({ onNavigate }: Props) {
               <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">The Explore step</span>
               <h2 className="font-display font-bold text-4xl text-neutral-900 mt-3 mb-6">The world is the classroom.</h2>
               <p className="text-neutral-600 leading-relaxed mb-5">
-                At Carmel, learning doesn't stop at the school door. Once a month, students step out into Henry County and beyond — visiting real workplaces, meeting people who do real work, and seeing themselves in futures they may not have imagined.
+                At Carmel, learning doesn’t stop at the school door. Twice a month, students step into their communities and beyond—visiting real workplaces, connecting with professionals, and discovering opportunities that help them envision futures they may not have imagined.
               </p>
               <p className="text-neutral-600 leading-relaxed">
-                This is the Explore step — the third and outermost ring of the Carmel model. Students take what they Know and have Applied, and they test it in the real world.
+                This is the Explore step—the third and outermost ring of the Carmel model. Students take what they Know and have Applied and put it to the test in the real world, making meaningful connections between what they learn and the possibilities ahead of them.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
