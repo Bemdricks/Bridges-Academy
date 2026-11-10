@@ -4,6 +4,7 @@ import { supabase } from '@/lib/supabase';
 import OpenRoles from '@/components/OpenRoles';
 import { openRoles } from '@/data/openRoles';
 import { consumeInvolvedScroll, consumeInvolvedTab, onInvolvedTab } from '@/lib/involvedTab';
+import { notifyActivity } from '@/lib/notifyActivity';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 interface Props { onNavigate: (page: Page) => void; }
@@ -94,6 +95,7 @@ export default function GetInvolved({ onNavigate }: Props) {
     });
     setRsvpSubmitting(false);
     if (error) { setRsvpError('Something went wrong. Please try again.'); return; }
+    notifyActivity({ table: 'rsvp_submissions', email: rsvp.email, name: rsvp.name });
     setRsvpDone(true);
   };
 
@@ -110,6 +112,7 @@ export default function GetInvolved({ onNavigate }: Props) {
     });
     setPartnerSubmitting(false);
     if (error) { setPartnerError('Something went wrong. Please try again.'); return; }
+    notifyActivity({ table: 'partner_submissions', email: partner.email, name: partner.name });
     setPartnerDone(true);
   };
 
@@ -161,6 +164,7 @@ export default function GetInvolved({ onNavigate }: Props) {
       setTeamError('Something went wrong. Please try again.');
       return;
     }
+    notifyActivity({ table: 'team_interest_submissions', email: team.email, name: team.name });
     setTeam({ name: '', email: '', role_interest: '', message: '' });
     setResume(null);
     setResumeKey((key) => key + 1);

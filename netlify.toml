@@ -9,9 +9,21 @@
 # Site configuration → Environment variables before deploying:
 #   VITE_SUPABASE_URL
 #   VITE_SUPABASE_ANON_KEY
+# Dashboard email alerts also need these Netlify-only variables:
+#   SUPABASE_SERVICE_ROLE_KEY
+#   RESEND_API_KEY
+#   NOTIFY_EMAIL
+#   NOTIFY_FROM
 
 # The app navigates in place, but this serves index.html for any
 # direct visit so Netlify does not return a 404.
+# The API rule stays ahead of that rewrite so submission alerts can send.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

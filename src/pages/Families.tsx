@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CheckCircle, AlertCircle, ChevronDown, ChevronUp, Calendar, UserPlus } from 'lucide-react';
+import { notifyActivity } from '@/lib/notifyActivity';
 import { supabase } from '@/lib/supabase';
 import Testimonials from '@/components/Testimonials';
 
@@ -76,6 +77,7 @@ export default function Families({ onNavigate }: Props) {
     });
     setISubmitting(false);
     if (error) { setIError('Something went wrong. Please try again.'); return; }
+    notifyActivity({ table: 'interest_submissions', email: interest.email, name: interest.parent_name });
     setIDone(true);
     setInterest({ parent_name: '', email: '', phone: '', zip_code: '', child_grade: '', questions: '' });
   };
@@ -95,6 +97,7 @@ export default function Families({ onNavigate }: Props) {
     });
     setVSubmitting(false);
     if (error) { setVError('Something went wrong. Please try again.'); return; }
+    notifyActivity({ table: 'visit_bookings', email: visit.email, name: visit.parent_name });
     setVDone(true);
     setVisit({ parent_name: '', email: '', phone: '', preferred_date: '', preferred_time: '', children_count: 1 });
   };

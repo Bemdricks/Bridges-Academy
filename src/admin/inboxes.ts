@@ -113,6 +113,7 @@ export interface Submission {
   role_interest?: string | null;
   message?: string | null;
   resume_path?: string | null;
+  notified_at?: string | null;
 }
 
 export const statuses: { id: SubmissionStatus; label: string }[] = [
