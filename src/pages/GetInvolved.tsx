@@ -220,11 +220,12 @@ export default function GetInvolved({ onNavigate }: Props) {
             <div>
               <div className="flex items-center gap-2 justify-center md:justify-start mb-3">
                 <Calendar className="w-5 h-5 text-brand-600" />
-                <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">Free Interest Meeting</span>
+                <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">A Carmel Academy Community Giveaway</span>
               </div>
-              <h2 className="font-display font-bold text-3xl text-neutral-900 mb-2">Come hear our story.</h2>
+              <h2 className="font-display font-bold text-3xl text-neutral-900 mb-2">Toys, Joy &amp; Possibilities</h2>
               <p className="text-neutral-600">
-                December 2026 &mdash; date and location to be announced. Free and open to all families. 6 p.m.
+                December 20, 2026 · 3:00–5:00 p.m.<br />
+                495 Santa Fe Trail, Ellenwood, GA 30294. Free and open to all families.
               </p>
             </div>
             <button
@@ -261,10 +262,10 @@ export default function GetInvolved({ onNavigate }: Props) {
           {/* RSVP */}
           {activeTab === 'rsvp' && (
             <div className="bg-white rounded-2xl p-8 border border-neutral-100 shadow-sm">
-              <h2 className="font-display font-bold text-2xl text-neutral-900 mb-2">Reserve Your Spot</h2>
-              <p className="text-neutral-500 text-sm mb-7">Secure your place at the free December interest meeting. Date and location will be confirmed soon.</p>
+              <h2 className="font-display font-bold text-2xl text-neutral-900 mb-2">Toys, Joy &amp; Possibilities</h2>
+              <p className="text-neutral-500 text-sm mb-7">A Carmel Academy Community Giveaway. December 20, 2026, 3:00–5:00 p.m. at 495 Santa Fe Trail, Ellenwood, GA 30294.</p>
               {rsvpDone ? (
-                <SuccessCard headline="You're reserved!" sub="We'll send you details about the date, time, and location as soon as they're confirmed. See you there!" onReset={() => setRsvpDone(false)} />
+                <SuccessCard headline="You're reserved!" sub="We'll see you December 20, 2026, 3:00–5:00 p.m. at 495 Santa Fe Trail, Ellenwood, GA 30294." onReset={() => setRsvpDone(false)} />
               ) : (
                 <form onSubmit={submitRsvp} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">

@@ -43,8 +43,8 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
         <span className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-center sm:justify-between gap-3 text-sm">
           <span className="inline-flex items-center gap-2 min-w-0">
             <Calendar className="w-4 h-4 shrink-0" />
-            <span className="font-semibold truncate">Free Interest Meeting</span>
-            <span className="hidden md:inline text-brand-900/80">December 2026 · 6 p.m. · Date and location coming soon</span>
+            <span className="font-semibold truncate">Toys, Joy &amp; Possibilities</span>
+            <span className="hidden lg:inline text-brand-900/80">A Carmel Academy Community Giveaway · December 20 · 3:00–5:00 p.m.</span>
           </span>
           <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-brand-900 text-white text-xs font-semibold px-3 py-1">
             RSVP <ArrowRight className="w-3 h-3" />

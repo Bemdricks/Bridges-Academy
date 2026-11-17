@@ -337,7 +337,7 @@ export default function Home({ onNavigate }: HomeProps) {
             <div className="grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
               {[
                 { name: 'Monique Bridges', role: 'Founder, Carmel Academy', bio: 'An educator and school founder with more than a decade of experience building schools and creating opportunities for students to thrive.', photo: moniquePhoto },
-                { name: 'Derrick Connell Robinson', role: 'Operations Leader', bio: 'An operations leader with a background in school operations, budgeting, and performance management across multiple schools.', photo: derrickPhoto },
+                { name: 'Derrick C. Robinson', role: 'Operations Leader', bio: 'An operations leader with a background in school operations, budgeting, and performance management across multiple schools.', photo: derrickPhoto },
                 { name: 'Nutan Vani Sewdath Dossa', role: 'Pathways to Possibility Lead', bio: 'An attorney who leads Pathways to Possibility, connecting students with mentors and career experiences.', photo: nutanPhoto },
               ].map((person) => (
                 <div key={person.name} className="bg-white rounded-2xl p-7 border border-neutral-100 hover:shadow-md transition-shadow text-center">
@@ -370,13 +370,16 @@ export default function Home({ onNavigate }: HomeProps) {
         <div ref={meeting.ref} className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center transition-all duration-700 ${meeting.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <span className="inline-block px-4 py-1.5 bg-white/20 text-white/90 text-sm font-medium rounded-full mb-4">
-              Free &amp; Open to All Families
+              A Carmel Academy Community Giveaway
             </span>
             <h2 className="font-display font-bold text-4xl md:text-5xl text-white mb-4">
-              Come hear our story.
+              Toys, Joy &amp; Possibilities
             </h2>
-            <p className="text-white/90 text-lg mb-8">
-              Free interest meeting in December 2026 at 6 p.m. — date and location to be announced. Come meet the team and ask every question on your mind.
+            <p className="text-white/90 text-lg mb-2">
+              December 20, 2026 · 3:00–5:00 p.m.
+            </p>
+            <p className="text-white/80 text-base mb-8">
+              495 Santa Fe Trail, Ellenwood, GA 30294. Free and open to all families.
             </p>
             <button
               onClick={() => { openInvolvedTab('rsvp', { scrollTo: 'rsvp-form' }); nav('involved'); }}

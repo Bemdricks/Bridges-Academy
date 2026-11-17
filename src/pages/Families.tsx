@@ -38,7 +38,7 @@ const faqs = [
   { q: 'How is Carmel different from other K–3 schools?', a: 'Carmel teaches social-emotional skills, life skills, leadership, entrepreneurship, financial literacy, and real-world experience alongside strong academics — all by design, not by accident.' },
   { q: 'How do I join the interest list?', a: 'Fill in the form on this page. It takes about a minute. You\'ll receive a confirmation and be among the first to hear updates, visit invitations, and enrollment news.' },
   { q: 'Can I visit before the school opens?', a: 'Yes. Book a visit using the form below and Monique\'s team will reach out to schedule a time.' },
-  { q: 'When is the interest meeting?', a: 'A free interest meeting is planned for December 2026 at 6 p.m. The date and location will be confirmed soon. RSVP on the Get Involved page.' },
+  { q: 'When is the interest meeting?', a: 'Toys, Joy & Possibilities is a Carmel Academy community giveaway on December 20, 2026, from 3:00 to 5:00 p.m. at 495 Santa Fe Trail, Ellenwood, GA 30294. It is free and open to all families. RSVP on the Get Involved page.' },
 ];
 
 export default function Families({ onNavigate }: Props) {

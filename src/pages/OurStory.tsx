@@ -114,7 +114,7 @@ export default function OurStory({ onNavigate }: Props) {
           <div className={`grid lg:grid-cols-2 gap-14 items-start transition-all duration-700 ${derrickRef.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="order-2 lg:order-1">
               <span className="text-brand-600 font-semibold text-sm uppercase tracking-widest">Meet Derrick</span>
-              <h2 className="font-display font-bold text-3xl md:text-4xl text-neutral-900 mt-3">Derrick Connell Robinson</h2>
+              <h2 className="font-display font-bold text-3xl md:text-4xl text-neutral-900 mt-3">Derrick C. Robinson</h2>
               <p className="text-brand-600 font-semibold mt-2 mb-6">Operations Leader</p>
               <div className="space-y-5 text-neutral-600 leading-relaxed">
                 <p>
@@ -131,7 +131,7 @@ export default function OurStory({ onNavigate }: Props) {
             <div className="order-1 lg:order-2 lg:flex lg:justify-end">
               <img
                 src={derrickPhoto}
-                alt="Derrick Connell Robinson, Founding Operations Leader"
+                alt="Derrick C. Robinson, Founding Operations Leader"
                 className="rounded-2xl w-full max-w-md object-cover object-center aspect-square shadow-xl"
               />
             </div>
@@ -217,7 +217,7 @@ export default function OurStory({ onNavigate }: Props) {
             <div className="grid sm:grid-cols-3 gap-8">
               {[
                 { name: 'Monique Bridges', role: 'Founder, Carmel Academy', bio: 'An educator and school founder with more than a decade of experience building schools and creating opportunities for students to thrive.', initial: 'M', photo: moniquePhoto },
-                { name: 'Derrick Connell Robinson', role: 'Operations Leader', bio: 'An operations leader with a background in school operations, budgeting, and performance management. He builds the systems that help Carmel’s vision come to life.', initial: 'D', photo: derrickPhoto },
+                { name: 'Derrick C. Robinson', role: 'Operations Leader', bio: 'An operations leader with a background in school operations, budgeting, and performance management. He builds the systems that help Carmel’s vision come to life.', initial: 'D', photo: derrickPhoto },
                 { name: 'Nutan Vani Sewdath Dossa', role: 'Pathways to Possibility Lead', bio: 'An attorney who connects students with mentors, professional experiences, and career opportunities that broaden what they believe is possible.', initial: 'N', photo: nutanPhoto },
               ].map((person) => (
                 <div key={person.name} className="bg-neutral-50 rounded-2xl p-8 border border-neutral-100 hover:shadow-md transition-shadow text-center">
