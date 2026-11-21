@@ -3,6 +3,7 @@ import { CheckCircle, AlertCircle, Calendar, Users, Briefcase, Mail, Phone, MapP
 import { supabase } from '@/lib/supabase';
 import OpenRoles from '@/components/OpenRoles';
 import { openRoles } from '@/data/openRoles';
+import { openFamiliesTab } from '@/lib/familiesTab';
 import { consumeInvolvedScroll, consumeInvolvedTab, onInvolvedTab } from '@/lib/involvedTab';
 import { notifyActivity } from '@/lib/notifyActivity';
 
@@ -11,12 +12,10 @@ interface Props { onNavigate: (page: Page) => void; }
 
 type TabId = 'rsvp' | 'partner' | 'team' | 'contact';
 
-interface RsvpForm { name: string; email: string; phone: string; guests_count: number; heard_about: string; heard_about_other: string; }
 interface PartnerForm { name: string; email: string; organization: string; role_type: string; message: string; }
 interface TeamForm { name: string; email: string; role_interest: string; message: string; }
 
 const roleTypes = ['Business / Employer', 'Tradesperson', 'Mentor / Coach', 'Community Organization', 'Other'];
-const heardAboutOptions = ['Google Search', 'Social Media', 'Other'];
 const teachRoles = openRoles.map((role) => role.title);
 const resumeTypes: Record<string, string> = {
   pdf: 'application/pdf',
@@ -28,11 +27,6 @@ export default function GetInvolved({ onNavigate }: Props) {
   const nav = (page: Page) => { onNavigate(page); window.scrollTo({ top: 0, behavior: 'instant' }); };
   const [activeTab, setActiveTab] = useState<TabId>(() => consumeInvolvedTab() ?? 'rsvp');
   const pendingScroll = useRef<string | null>(null);
-
-  const [rsvp, setRsvp] = useState<RsvpForm>({ name: '', email: '', phone: '', guests_count: 1, heard_about: '', heard_about_other: '' });
-  const [rsvpSubmitting, setRsvpSubmitting] = useState(false);
-  const [rsvpDone, setRsvpDone] = useState(false);
-  const [rsvpError, setRsvpError] = useState('');
 
   const [partner, setPartner] = useState<PartnerForm>({ name: '', email: '', organization: '', role_type: '', message: '' });
   const [partnerSubmitting, setPartnerSubmitting] = useState(false);
@@ -77,26 +71,9 @@ export default function GetInvolved({ onNavigate }: Props) {
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, [activeTab]);
 
-  const submitRsvp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setRsvpSubmitting(true);
-    setRsvpError('');
-    if (!supabase) { setRsvpSubmitting(false); setRsvpError('Something went wrong. Please try again.'); return; }
-    const heardAbout = rsvp.heard_about === 'Other' ? rsvp.heard_about_other.trim() : rsvp.heard_about;
-    if (rsvp.heard_about === 'Other' && !heardAbout) {
-      setRsvpSubmitting(false);
-      setRsvpError('Tell us how you heard about us.');
-      return;
-    }
-    const { error } = await supabase.from('rsvp_submissions').insert({
-      name: rsvp.name, email: rsvp.email,
-      phone: rsvp.phone || null, guests_count: rsvp.guests_count,
-      heard_about: heardAbout || null,
-    });
-    setRsvpSubmitting(false);
-    if (error) { setRsvpError('Something went wrong. Please try again.'); return; }
-    notifyActivity({ table: 'rsvp_submissions', email: rsvp.email, name: rsvp.name });
-    setRsvpDone(true);
+  const openInterestList = () => {
+    openFamiliesTab('interest', { scrollTo: 'interest-form' });
+    nav('families');
   };
 
   const submitPartner = async (e: React.FormEvent) => {
@@ -235,7 +212,7 @@ export default function GetInvolved({ onNavigate }: Props) {
               }}
               className="flex-shrink-0 mt-5 md:mt-0 px-7 py-3.5 bg-brand-700 hover:bg-brand-800 text-white font-semibold rounded-full transition-colors text-sm inline-flex items-center gap-2 mx-auto md:mx-0"
             >
-              Reserve Your Spot
+              RSVP Closed
             </button>
           </div>
         </div>
@@ -264,61 +241,17 @@ export default function GetInvolved({ onNavigate }: Props) {
             <div className="bg-white rounded-2xl p-8 border border-neutral-100 shadow-sm">
               <h2 className="font-display font-bold text-2xl text-neutral-900 mb-2">Toys, Joy &amp; Possibilities</h2>
               <p className="text-neutral-500 text-sm mb-7">A Carmel Academy Community Giveaway. December 20, 2026, 3:00–5:00 p.m. at 495 Santa Fe Trail, Ellenwood, GA 30294.</p>
-              {rsvpDone ? (
-                <SuccessCard headline="You're reserved!" sub="We'll see you December 20, 2026, 3:00–5:00 p.m. at 495 Santa Fe Trail, Ellenwood, GA 30294." onReset={() => setRsvpDone(false)} />
-              ) : (
-                <form onSubmit={submitRsvp} className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className={labelClass}>Your Name <span className="text-error-500">*</span></label>
-                      <input type="text" required className={inputClass} placeholder="Your full name" value={rsvp.name} onChange={e => setRsvp(s => ({ ...s, name: e.target.value }))} />
-                    </div>
-                    <div>
-                      <label className={labelClass}>Email <span className="text-error-500">*</span></label>
-                      <input type="email" required className={inputClass} placeholder="you@example.com" value={rsvp.email} onChange={e => setRsvp(s => ({ ...s, email: e.target.value }))} />
-                    </div>
-                  </div>
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className={labelClass}>Phone Number</label>
-                      <input type="tel" className={inputClass} placeholder="(555) 000-0000" value={rsvp.phone} onChange={e => setRsvp(s => ({ ...s, phone: e.target.value }))} />
-                    </div>
-                    <div>
-                      <label className={labelClass}>Guests (including you)</label>
-                      <input type="number" min={1} max={20} className={inputClass} value={rsvp.guests_count} onChange={e => setRsvp(s => ({ ...s, guests_count: parseInt(e.target.value) || 1 }))} />
-                    </div>
-                  </div>
-                  <div>
-                    <label className={labelClass}>How did you hear about us? <span className="text-error-500">*</span></label>
-                    <select
-                      required
-                      className={`${inputClass} bg-white`}
-                      value={rsvp.heard_about}
-                      onChange={e => setRsvp(s => ({ ...s, heard_about: e.target.value, heard_about_other: e.target.value === 'Other' ? s.heard_about_other : '' }))}
-                    >
-                      <option value="">Select one</option>
-                      {heardAboutOptions.map(option => <option key={option} value={option}>{option}</option>)}
-                    </select>
-                  </div>
-                  {rsvp.heard_about === 'Other' && (
-                    <div>
-                      <label className={labelClass}>Please specify <span className="text-error-500">*</span></label>
-                      <input
-                        type="text"
-                        required
-                        className={inputClass}
-                        placeholder="How did you hear about us?"
-                        value={rsvp.heard_about_other}
-                        onChange={e => setRsvp(s => ({ ...s, heard_about_other: e.target.value }))}
-                      />
-                    </div>
-                  )}
-                  {rsvpError && <ErrorMsg msg={rsvpError} />}
-                  <button type="submit" disabled={rsvpSubmitting} className="w-full py-4 bg-brand-700 hover:bg-brand-800 disabled:bg-brand-400 text-white font-semibold rounded-xl transition-colors text-sm">
-                    {rsvpSubmitting ? 'Sending…' : 'Reserve My Spot'}
-                  </button>
-                </form>
-              )}
+              <div className="rounded-xl border border-neutral-100 bg-neutral-50 px-6 py-8 text-center">
+                <h3 className="font-display font-bold text-xl text-neutral-900 mb-2">Registration is closed</h3>
+                <p className="text-neutral-600 text-sm leading-relaxed max-w-md mx-auto">We're no longer taking RSVPs for this event. Join the interest list to hear what's next from Carmel Academy.</p>
+                <button
+                  type="button"
+                  onClick={openInterestList}
+                  className="mt-6 px-7 py-3.5 bg-brand-700 hover:bg-brand-800 text-white font-semibold rounded-full transition-colors text-sm"
+                >
+                  Join the Interest List
+                </button>
+              </div>
             </div>
           )}
 
@@ -448,7 +381,7 @@ export default function GetInvolved({ onNavigate }: Props) {
               <div className="mt-8 bg-brand-50 rounded-xl p-5 border border-brand-100">
                 <p className="text-brand-800 text-sm font-semibold mb-2">Looking for something specific?</p>
                 <p className="text-brand-700 text-sm">
-                  For the interest list and visit booking, visit <button onClick={() => nav('families')} className="underline font-medium">Families</button>. For the December meeting RSVP, use the RSVP tab above.
+                  For the interest list and visit booking, visit <button onClick={() => nav('families')} className="underline font-medium">Families</button>. RSVPs for the December giveaway are closed.
                 </p>
               </div>
             </div>

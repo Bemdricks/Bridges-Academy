@@ -385,7 +385,7 @@ export default function Home({ onNavigate }: HomeProps) {
               onClick={() => { openInvolvedTab('rsvp', { scrollTo: 'rsvp-form' }); nav('involved'); }}
               className="px-8 py-4 bg-amber-500 text-brand-900 font-semibold rounded-full hover:bg-amber-400 transition-colors text-base inline-flex items-center gap-2"
             >
-              Reserve Your Spot <ArrowRight className="w-4 h-4" />
+              RSVP Closed <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>

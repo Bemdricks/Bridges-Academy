@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { ArrowRight, Calendar, Menu, X } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
 import logo from '../images/logo.png';
-import { openInvolvedTab } from '@/lib/involvedTab';
+import { openFamiliesTab } from '@/lib/familiesTab';
 
 type Page = 'home' | 'approach' | 'story' | 'families' | 'beyond' | 'involved';
 
@@ -27,9 +27,9 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
-  const openRsvp = () => {
-    openInvolvedTab('rsvp', { scrollTo: 'rsvp-form' });
-    onNavigate('involved');
+  const openInterestList = () => {
+    openFamiliesTab('interest', { scrollTo: 'interest-form' });
+    onNavigate('families');
     setMenuOpen(false);
   };
 
@@ -37,14 +37,12 @@ export default function Nav({ currentPage, onNavigate }: NavProps) {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <button
         type="button"
-        onClick={openRsvp}
+        onClick={openInterestList}
         className="w-full bg-amber-500 hover:bg-amber-400 text-brand-900 transition-colors"
       >
         <span className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-center sm:justify-between gap-3 text-sm">
-          <span className="inline-flex items-center gap-2 min-w-0">
-            <Calendar className="w-4 h-4 shrink-0" />
-            <span className="font-semibold truncate">Toys, Joy &amp; Possibilities</span>
-            <span className="hidden lg:inline text-brand-900/80">A Carmel Academy Community Giveaway · December 20 · 3:00–5:00 p.m.</span>
+          <span className="font-semibold text-center sm:text-left">
+            We're Building Something Different. Come See What's Possible.
           </span>
           <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-brand-900 text-white text-xs font-semibold px-3 py-1">
             RSVP <ArrowRight className="w-3 h-3" />

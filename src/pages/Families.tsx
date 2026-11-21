@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CheckCircle, AlertCircle, ChevronDown, ChevronUp, Calendar, UserPlus } from 'lucide-react';
+import { consumeFamiliesScroll, consumeFamiliesTab, onFamiliesTab } from '@/lib/familiesTab';
 import { notifyActivity } from '@/lib/notifyActivity';
 import { supabase } from '@/lib/supabase';
 import Testimonials from '@/components/Testimonials';
@@ -38,13 +39,45 @@ const faqs = [
   { q: 'How is Carmel different from other K–3 schools?', a: 'Carmel teaches social-emotional skills, life skills, leadership, entrepreneurship, financial literacy, and real-world experience alongside strong academics — all by design, not by accident.' },
   { q: 'How do I join the interest list?', a: 'Fill in the form on this page. It takes about a minute. You\'ll receive a confirmation and be among the first to hear updates, visit invitations, and enrollment news.' },
   { q: 'Can I visit before the school opens?', a: 'Yes. Book a visit using the form below and Monique\'s team will reach out to schedule a time.' },
-  { q: 'When is the interest meeting?', a: 'Toys, Joy & Possibilities is a Carmel Academy community giveaway on December 20, 2026, from 3:00 to 5:00 p.m. at 495 Santa Fe Trail, Ellenwood, GA 30294. It is free and open to all families. RSVP on the Get Involved page.' },
+  { q: 'When is the interest meeting?', a: 'Toys, Joy & Possibilities is a Carmel Academy community giveaway on December 20, 2026, from 3:00 to 5:00 p.m. at 495 Santa Fe Trail, Ellenwood, GA 30294. It is free and open to all families. RSVPs are closed.' },
 ];
 
 export default function Families({ onNavigate }: Props) {
   const nav = (page: Page) => { onNavigate(page); window.scrollTo({ top: 0, behavior: 'instant' }); };
-  const [activeTab, setActiveTab] = useState<TabId>('interest');
+  const [activeTab, setActiveTab] = useState<TabId>(() => consumeFamiliesTab() ?? 'interest');
+  const pendingScroll = useRef<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    const scrollToPending = () => {
+      const id = pendingScroll.current;
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      pendingScroll.current = null;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    pendingScroll.current = consumeFamiliesScroll();
+    scrollToPending();
+
+    return onFamiliesTab(() => {
+      const tab = consumeFamiliesTab();
+      if (tab) setActiveTab(tab);
+      const scrollTo = consumeFamiliesScroll();
+      if (scrollTo) pendingScroll.current = scrollTo;
+      window.setTimeout(scrollToPending, 60);
+    });
+  }, []);
+
+  useEffect(() => {
+    const id = pendingScroll.current;
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (!el) return;
+    pendingScroll.current = null;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [activeTab]);
 
   // Interest form
   const [interest, setInterest] = useState<InterestForm>({
@@ -64,13 +97,18 @@ export default function Families({ onNavigate }: Props) {
 
   const submitInterest = async (e: React.FormEvent) => {
     e.preventDefault();
-    setISubmitting(true);
     setIError('');
+    const phone = interest.phone.trim();
+    if (!phone) {
+      setIError('Enter a phone number.');
+      return;
+    }
+    setISubmitting(true);
     if (!supabase) { setISubmitting(false); setIError('Something went wrong. Please try again.'); return; }
     const { error } = await supabase.from('interest_submissions').insert({
       parent_name: interest.parent_name,
       email: interest.email,
-      phone: interest.phone || null,
+      phone,
       zip_code: interest.zip_code || null,
       child_grade: interest.child_grade || null,
       questions: interest.questions || null,
@@ -84,13 +122,18 @@ export default function Families({ onNavigate }: Props) {
 
   const submitVisit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setVSubmitting(true);
     setVError('');
+    const phone = visit.phone.trim();
+    if (!phone) {
+      setVError('Enter a phone number.');
+      return;
+    }
+    setVSubmitting(true);
     if (!supabase) { setVSubmitting(false); setVError('Something went wrong. Please try again.'); return; }
     const { error } = await supabase.from('visit_bookings').insert({
       parent_name: visit.parent_name,
       email: visit.email,
-      phone: visit.phone || null,
+      phone,
       preferred_date: visit.preferred_date || null,
       preferred_time: visit.preferred_time || null,
       children_count: visit.children_count,
@@ -120,7 +163,7 @@ export default function Families({ onNavigate }: Props) {
       </section>
 
       {/* Tab forms */}
-      <section className="py-20 bg-neutral-50">
+      <section id="interest-form" className="scroll-mt-52 py-20 bg-neutral-50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Tabs */}
           <div className="flex gap-3 mb-10 bg-white rounded-2xl p-2 border border-neutral-100 shadow-sm">
@@ -184,9 +227,10 @@ export default function Families({ onNavigate }: Props) {
                   </div>
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Phone Number</label>
+                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Phone Number <span className="text-error-500">*</span></label>
                       <input
                         type="tel"
+                        required
                         value={interest.phone}
                         onChange={e => setInterest(s => ({ ...s, phone: e.target.value }))}
                         className="w-full border border-neutral-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-transparent transition"
@@ -283,9 +327,10 @@ export default function Families({ onNavigate }: Props) {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-1.5">Phone Number</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-1.5">Phone Number <span className="text-error-500">*</span></label>
                     <input
                       type="tel"
+                      required
                       value={visit.phone}
                       onChange={e => setVisit(s => ({ ...s, phone: e.target.value }))}
                       className="w-full border border-neutral-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-transparent transition"
